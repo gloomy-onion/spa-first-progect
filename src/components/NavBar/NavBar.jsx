@@ -13,7 +13,7 @@ const NavBar = () => {
         <div id='myDropdown' className={s.dropdownContent}>
           <div className={s.dropdown}>
             <a href='#'>Residential</a>
-            <a href='#'>Public Spaces</a>
+            <a href='#'>Chat</a>
             <a href='#'>Retail</a>
             <a href='#'>Bars & Restaurants</a>
             <a href='#'>Team</a>
