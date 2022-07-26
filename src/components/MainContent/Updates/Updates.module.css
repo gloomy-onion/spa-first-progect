@@ -1,0 +1,9 @@
+h3 {
+  align-self: center;
+}
+.posts {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
