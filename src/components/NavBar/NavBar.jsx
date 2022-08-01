@@ -12,9 +12,9 @@ const NavBar = () => {
         </button>
         <div id='myDropdown' className={s.dropdownContent}>
           <div className={s.dropdown}>
-            <a href='#'>Residential</a>
-            <a href='#'>Chat</a>
-            <a href='#'>Retail</a>
+            <a href='/MainContent'>Main Page</a>
+            <a href='/Chat'>Chat</a>
+            <a href='/Updates'>Updates</a>
             <a href='#'>Bars & Restaurants</a>
             <a href='#'>Team</a>
           </div>
