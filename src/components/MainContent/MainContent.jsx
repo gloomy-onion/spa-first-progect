@@ -1,38 +1,38 @@
 import React from 'react';
-import frontPageImg from './../../pictures/first-page.png';
-import firstCatImg from './../../pictures/hall.jpeg';
-import secondCatImg from './../../pictures/bathroom.jpeg';
-import thirdCatImg from './../../pictures/livingroom.jpeg';
-import fourthCatImg from './../../pictures/toilet.jpeg';
-import fifthCatImg from './../../pictures/bedroom.jpeg';
-import s from './MainContent.module.css';
-import cx from 'classnames';
+import frontPageImg from './../../img/first-page.png';
+import firstCatImg from './../../img/hall.jpeg';
+import secondCatImg from './../../img/bathroom.jpeg';
+import thirdCatImg from './../../img/livingroom.jpeg';
+import fourthCatImg from './../../img/toilet.jpeg';
+import fifthCatImg from './../../img/bedroom.jpeg';
+import styles from './MainContent.module.css';
+import cn from 'classnames';
 
 const MainContent = () => {
   return (
-    <div className={ s.MainContent }>
-      <div className={ s.frontPageImage }>
-        <img src={ frontPageImg } className={ s.frontPage } />
+    <div className={ styles.MainContent }>
+      <div className={ styles.frontPageImage }>
+        <img src={ frontPageImg } className={ styles.frontPage } />
       </div>
-      <div className={ s.projectsContainer }>
-        <div className={ cx( s.firstCategory, s.card ) }>
-          <img src={ firstCatImg } alt='hall' className={ s.img } />
+      <div className={ styles.projectsContainer }>
+        <div className={ cn( styles.firstCategory, styles.card ) }>
+          <img src={ firstCatImg } alt='hall' className={ styles.img } />
           <a href='#'>Residential</a>
         </div>
-        <div className={ cx( s.secondCategory, s.card ) }>
-          <img src={ secondCatImg } alt='bathroom' className={ s.img } />
+        <div className={ cn( styles.secondCategory, styles.card ) }>
+          <img src={ secondCatImg } alt='bathroom' className={ styles.img } />
           <a href='#'>Public Spaces</a>
         </div>
-        <div className={ cx( s.thirdCategory, s.card ) }>
-          <img src={ thirdCatImg } alt='livingroom' className={ s.img } />
+        <div className={ cn( styles.thirdCategory, styles.card ) }>
+          <img src={ thirdCatImg } alt='livingroom' className={ styles.img } />
           <a href='#'>Retail</a>
         </div>
-        <div className={ cx( s.fourthCategory, s.card ) }>
-          <img src={ fourthCatImg } alt='toilet' className={ s.img } />
+        <div className={ cn( styles.fourthCategory, styles.card ) }>
+          <img src={ fourthCatImg } alt='toilet' className={ styles.img } />
           <a href='#'>Bars & Restaurants</a>
         </div>
-        <div className={ cx( s.fifthCategory, s.card ) }>
-          <img src={ fifthCatImg } alt='bedroom' className={ s.img } />
+        <div className={ cn( styles.fifthCategory, styles.card ) }>
+          <img src={ fifthCatImg } alt='bedroom' className={ styles.img } />
           <a href='#'>Team</a>
         </div>
       </div>

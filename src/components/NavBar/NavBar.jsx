@@ -1,20 +1,21 @@
 import React from 'react';
-import list from './../../pictures/list.png';
-import s from './NavBar.module.css';
-import cx from 'classnames';
+import list from './../../img/list.png';
+import styles from './NavBar.module.css';
+import cn from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <nav>
-      <div className={cx(s.show, s.dropdown)}>
-        <button onclick='myFunction()' className={s.dropbtn}>
-          <img className={s.list} src={list} />
+      <div className={cn(styles.show, styles.dropdown)}>
+        <button onclick='myFunction()' className={styles.dropbtn}>
+          <img className={styles.list} src={list} />
         </button>
-        <div id='myDropdown' className={s.dropdownContent}>
-          <div className={s.dropdown}>
-            <a href='/MainContent'>Main Page</a>
-            <a href='/Chat'>Chat</a>
-            <a href='/Updates'>Updates</a>
+        <div id='myDropdown' className={styles.dropdownContent}>
+          <div className={styles.dropdown}>
+            <NavLink to='/'>Main Page</NavLink>
+            <NavLink to='/chat'>Chat</NavLink>
+            <NavLink to='/updates'>Updates</NavLink>
             <a href='#'>Bars & Restaurants</a>
             <a href='#'>Team</a>
           </div>

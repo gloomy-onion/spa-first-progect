@@ -5,15 +5,17 @@ import Header from './components/Header/Header';
 import MainContent from './components/MainContent/MainContent';
 import Updates from './components/MainContent/Updates/Updates';
 import Chat from './components/Chat/Chat';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const App = () => {
   return (
     <BrowserRouter>
       <div className='App'>
         <Header />
-        <Route path='/chat' component={Chat} />
-        <Route path='/MainContent' component={MainContent} />
-        <Route path='/updates' component={Updates} />
+        <Routes>
+          <Route exact path='/' element={<MainContent />} />
+          <Route path='/chat' element={<Chat />} />
+          <Route path='/updates' element={<Updates />} />
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>
