@@ -10,7 +10,7 @@ const Footer = () => {
         <div className={styles.nav}>
           <a href='#'>contact</a> 
           <a href='#'>awards</a>
-          <a href='#'>rewiews</a>
+          <a href='#'>reviews</a>
         </div>
       </div>
     </footer>

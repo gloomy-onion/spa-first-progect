@@ -3,6 +3,19 @@ import list from './../../img/list.png';
 import styles from './NavBar.module.css';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
+import linksPath from './linksPath';
+const NavigationLink = ( props ) => {
+  const {to , text } = props;
+
+  return (
+    <NavLink
+      to={ to } 
+      className={(navData) => (navData.isActive ? styles.active : '')}
+    >
+      { text }
+    </NavLink>
+  );
+};
 
 const NavBar = () => {
   return (
@@ -12,27 +25,10 @@ const NavBar = () => {
           <img className={styles.list} src={list} />
         </button>
         <div id='myDropdown' className={styles.dropdownContent}>
-          <div className={styles.dropdown}>
-            <NavLink
-              to='/'
-              className={(navData) => (navData.isActive ? styles.active : '')}
-            >
-              Main Page
-            </NavLink>
-            <NavLink
-              to='/chat'
-              className={(navData) => (navData.isActive ? styles.active : '')}
-            >
-              Chat
-            </NavLink>
-            <NavLink
-              to='/updates'
-              className={(navData) => (navData.isActive ? styles.active : '')}
-            >
-              Updates
-            </NavLink>
-            <a href='#'>Bars & Restaurants</a>
-            <a href='#'>Team</a>
+          <div className={ styles.dropdown }>
+            { linksPath.map( ( path ) => {
+              return <NavigationLink to={path.to} text={path.text}/> 
+            } ) }
           </div>
         </div>
       </div>
@@ -40,3 +36,4 @@ const NavBar = () => {
   );
 };
 export default NavBar;
+//  className={(navData) => (navData.isActive ? styles.active : '')}

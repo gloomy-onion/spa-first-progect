@@ -1,5 +1,5 @@
 @media screen and (max-width: 600px) {
-  .img {
+  .image {
     max-width: 600px;
     max-height: 300px;
   }
@@ -41,7 +41,7 @@
   flex-direction: column;
 }
 
-.img {
+.image {
   max-width: 350px;
   min-width: 300px;
   height: auto;
@@ -50,8 +50,4 @@
 }
 .card a {
   color: #000000;
-}
-a:visited {
-  text-decoration: none;
-  text-decoration: underline;
 }
