@@ -13,9 +13,24 @@ const NavBar = () => {
         </button>
         <div id='myDropdown' className={styles.dropdownContent}>
           <div className={styles.dropdown}>
-            <NavLink to='/'>Main Page</NavLink>
-            <NavLink to='/chat'>Chat</NavLink>
-            <NavLink to='/updates'>Updates</NavLink>
+            <NavLink
+              to='/'
+              className={(navData) => (navData.isActive ? styles.active : '')}
+            >
+              Main Page
+            </NavLink>
+            <NavLink
+              to='/chat'
+              className={(navData) => (navData.isActive ? styles.active : '')}
+            >
+              Chat
+            </NavLink>
+            <NavLink
+              to='/updates'
+              className={(navData) => (navData.isActive ? styles.active : '')}
+            >
+              Updates
+            </NavLink>
             <a href='#'>Bars & Restaurants</a>
             <a href='#'>Team</a>
           </div>
