@@ -5,4 +5,4 @@ const linksPath = [
   { to: '/bars', text: 'Bars & Restaurants' },
   { to: '/team', text: 'Team' },
 ];
-export default linksPath;
+export default linksPath

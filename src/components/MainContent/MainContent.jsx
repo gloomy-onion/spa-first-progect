@@ -1,6 +1,6 @@
 import React from 'react';
 import frontPageImg from './../../img/first-page.png';
-import cardsInfo from './cardsInfo';
+import { CARDS_INFO } from './constants';
 import styles from './MainContent.module.css';
 
 const MainPageCard = (props) => {
@@ -8,8 +8,7 @@ const MainPageCard = (props) => {
 
   return (
     <div className={styles.card}>
-      { image }
-      {title}
+<img src={image} className={styles.image} />      {title}
     </div>
   );
 };
@@ -21,7 +20,7 @@ const MainContent = () => {
         <img src={frontPageImg} className={styles.frontPage} />
       </div>
       <div className={styles.projectsContainer}>
-        {cardsInfo.map((card) => {
+        {CARDS_INFO.map((card) => {
           return <MainPageCard image={card.image} title={card.title} />;
         })}
       </div>

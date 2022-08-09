@@ -3,7 +3,7 @@
   grid-template-columns: 2fr 10fr;
 }
 .dialoguesItems {
-  padding: 20px;
+  padding: 0px;
 }
 .dialoguesItems .active {
   text-decoration: underline;
