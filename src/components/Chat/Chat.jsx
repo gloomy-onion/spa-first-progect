@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 const Dialogues = (props) => {
-  const { userName, id} = props;
+  const { userName, id } = props;
   return (
     <div className={styles.dialogue}>
       <NavLink
@@ -23,6 +23,16 @@ const dialogueInfo = [
   { userName: 'Workers', id: '4' },
   { userName: 'Light', id: '5' },
 ];
+
+const Messages = (props) => {
+  const { messageText } = props;
+  return <div className={styles.messages}>{messageText}</div>;
+};
+const messageContent = [
+  { messageText: 'Your workers are ready to start' },
+  { messageText: 'Your order is delayed' },
+  { messageText: 'Your color has been changed' },
+];
 const Chat = (props) => {
   return (
     <div className={styles.dialogues}>
@@ -40,9 +50,9 @@ const Chat = (props) => {
         </div>
       </div>
       <div className={styles.messages}>
-        <div className={styles.message}>Your workers are ready to start</div>
-        <div className={styles.message}>Your order is delayed</div>
-        <div className={styles.message}>Your color has been changed</div>
+        {messageContent.map((text) => {
+          return <Messages messageText={text.messageText} />;
+        })}
       </div>
     </div>
   );
