@@ -1,21 +1,8 @@
 import React from 'react';
 import styles from './Chat.module.css';
-import cn from 'classnames';
-import { NavLink } from 'react-router-dom';
+import ChatItem from './ChatItem/ChatItem'; 
+import Message from './Message/Message';
 
-const Dialogues = (props) => {
-  const { userName, id } = props;
-  return (
-    <div className={styles.dialogue}>
-      <NavLink
-        to={`/chat/${id}`}
-        className={(navData) => (navData.isActive ? styles.active : '')}
-      >
-        {userName}
-      </NavLink>
-    </div>
-  );
-};
 const dialogueInfo = [
   { userName: 'Color', id: '1' },
   { userName: 'Floor', id: '2' },
@@ -24,10 +11,7 @@ const dialogueInfo = [
   { userName: 'Light', id: '5' },
 ];
 
-const Messages = (props) => {
-  const { messageText } = props;
-  return <div className={styles.messages}>{messageText}</div>;
-};
+
 const messageContent = [
   { messageText: 'Your workers are ready to start' },
   { messageText: 'Your order is delayed' },
@@ -40,7 +24,7 @@ const Chat = (props) => {
         <div className={styles.dialogue}>
           {dialogueInfo.map((dialogue) => {
             return (
-              <Dialogues
+              <ChatItem
                 to={dialogue.to}
                 userName={dialogue.userName}
                 id={dialogue.id}
@@ -51,7 +35,7 @@ const Chat = (props) => {
       </div>
       <div className={styles.messages}>
         {messageContent.map((text) => {
-          return <Messages messageText={text.messageText} />;
+          return <Message messageText={text.messageText} />;
         })}
       </div>
     </div>

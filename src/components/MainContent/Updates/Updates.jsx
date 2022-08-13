@@ -2,7 +2,9 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './Updates.module.css';
 import cn from 'classnames';
+import { postsData } from './Post/Post';
 const Updates = () => {
+
   return (
     <div className={cn(styles.posts)}>
       <h3>Our Thoughts and Updates</h3>
@@ -10,8 +12,15 @@ const Updates = () => {
       <button>Post</button>
       <button>Remove</button>
       <div className={styles.posts}>
-        <Post message='Hi' likesCount={30} />
-        <Post message='bye' likesCount={3} />
+        {postsData.map((data) => {
+          return (
+            <Post
+              message={data.message}
+              id={data.id}
+              likesCount={data.likesCount}
+            />
+          );
+        })}
       </div>
     </div>
   );
