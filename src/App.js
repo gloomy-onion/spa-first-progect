@@ -17,14 +17,14 @@ const App = (props) => {
             path='/chat'
             element={
               <Chat
-                messageContent={props.messageContent}
-                dialogueInfo={props.dialogueInfo}
+                messageContent={props.appState.messageContent}
+                dialogueInfo={props.appState.dialogueInfo}
               />
             }
           />
           <Route
             path='/updates'
-            element={<Updates postsData={props.postsData} />}
+            element={<Updates postsData={props.appState.postsData} />}
           />
         </Routes>
         <Footer />
