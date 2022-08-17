@@ -1,19 +1,24 @@
 .dialogues {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
+
 .dialoguesItems {
-  padding: 0px;
+    padding: 0px;
 }
+
 .dialoguesItems .active {
-  text-decoration: underline;
+    text-decoration: underline;
 }
+
 .dialogue {
-  padding: 20px;
+    padding: 20px;
 }
+
 .messages {
-  padding: 20px;
+    padding: 20px;
 }
+
 .message {
-  padding: 20px;
+    padding: 20px;
 }
