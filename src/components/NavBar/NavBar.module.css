@@ -1,75 +1,85 @@
 nav {
-  display: block;
-  justify-self: flex-end;
-  text-transform: uppercase;
-  right: auto;
-  text-align: end;
-  line-height: 1.5em;
+    display: block;
+    justify-self: flex-end;
+    text-transform: uppercase;
+    right: auto;
+    text-align: end;
+    line-height: 1.5em;
 }
 
 nav a {
-  color: #000000;
-  text-align: center;
-  padding: 30px 20px;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 10px 25px;
+    color: #000000;
+    text-align: center;
+    padding: 30px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px 25px;
 }
-@media screen and (max-width: 600px) {
-  .dropbtn {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    padding: 10px;
-    width: 70px;
-    font-size: 15px;
-  }
-  .list {
-    width: 50px;
-    height: auto;
-  }
-  .dropdownContent a {
-    padding: 20px;
-    display: block;
-    text-align: right;
-    margin: 0;
-  }
-  .dropdownContent a:hover {
-    text-decoration: line-through;
-  }
-  .dropdownContent {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 350px;
-    z-index: 1;
-    float: right;
-    margin-top: auto;
-    margin-right: -40px;
-    overflow: auto;
-    right: 0;
-  }
 
-  .dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  .dropbtn:hover {
-    background-color: rgba(41, 41, 41, 0.001);
-    cursor: pointer;
-  }
-  .show {
-    display: block;
-  }
-  .Header {
-    max-height: 70px;
-  }
+@media screen and (max-width: 600px) {
+    .dropbtn {
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        padding: 10px;
+        width: 70px;
+        font-size: 15px;
+    }
+
+    .list {
+        width: 50px;
+        height: auto;
+    }
+
+    .dropdownContent a {
+        padding: 20px;
+        display: block;
+        text-align: right;
+        margin: 0;
+    }
+
+    .dropdownContent a:hover {
+        text-decoration: line-through;
+    }
+
+    .dropdownContent {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 350px;
+        z-index: 1;
+        float: right;
+        margin-top: auto;
+        margin-right: -40px;
+        overflow: auto;
+        right: 0;
+    }
+
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .dropbtn:hover {
+        background-color: rgba(41, 41, 41, 0.001);
+        cursor: pointer;
+    }
+
+    .show {
+        display: block;
+    }
+
+    .Header {
+        max-height: 70px;
+    }
 }
+
 @media screen and (min-width: 600px) {
-  .list,
-  .dropbtn {
-    display: none;
-  }
+    .list,
+    .dropbtn {
+        display: none;
+    }
 }
+
 .active {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
