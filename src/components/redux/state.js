@@ -8,6 +8,7 @@ let state = {
             {message: 'bye', id: 2, likesCount: 0},
             {message: 'bye', id: 2, likesCount: 88},
         ],
+        newPostText: 'blah-blah'
     },
 
     chat: {
@@ -25,16 +26,24 @@ let state = {
         ],
     },
 };
-export const addPost = (postMessage) => {
+
+export const addPost = () => {
     let newPost = {
-        message: postMessage,
+        message: state.updates.newPostText,
         id: 5,
         likesCount: 0,
     };
     state.updates.postsData.push(newPost);
+    state.updates.newPostText = '';
     rerenderEntireTree(state);
 };
+export const updateNewPostText = (newText) => {
+state.updates.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
 export const subscribe = (observer) => {
     rerenderEntireTree = observer;
 };
+
 export default state;

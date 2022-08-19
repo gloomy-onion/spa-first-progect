@@ -25,7 +25,9 @@ const App = (props) => {
                     />
                     <Route
                         path="/updates"
-                        element={<Updates postsData={props.state.updates.postsData} addPost={props.addPost}/>}
+                        element={<Updates postsData={props.state.updates.postsData} addPost={props.addPost}
+                                          newPostText={props.state.updates.newPostText}
+                                          updateNewPostText={props.updateNewPostText}/>}
                     />
                 </Routes>
                 <Footer/>

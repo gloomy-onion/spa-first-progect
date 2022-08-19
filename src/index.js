@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state, {subscribe} from './components/redux/state';
-import {addPost} from './components/redux/state';
+import state, {addPost, subscribe, updateNewPostText} from './components/redux/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
@@ -12,6 +11,7 @@ let rerenderEntireTree = (state) => {
         <App
             state={state}
             addPost={addPost}
+            updateNewPostText={updateNewPostText}
         />
     );
 };

@@ -6,13 +6,17 @@ import cn from 'classnames';
 const Updates = (props) => {
     let newPostElement = React.createRef();
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = '';
+        props.addPost();
     };
+
+    let onPostChange = () => {
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
+    };
+
     return (<div className={cn(styles.posts)}>
         <h3>Our Thoughts and Updates</h3>
-        <textarea ref={newPostElement}></textarea>
+        <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}/>
         <button onClick={addPost}>Post</button>
         <button>Remove</button>
         <div className={styles.posts}>
