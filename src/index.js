@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './components/redux/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let rerenderEntireTree = (state) => {
+const rerenderEntireTree = (state) => {
     root.render(
         <App
             state={state}

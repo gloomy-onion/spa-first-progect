@@ -24,26 +24,30 @@ let store = {
             ],
         },
     },
+
     _callSubscriber() {
-        console.log('State changed.');
     },
+
     getState() {
         return this._state;
     },
+
     addPost() {
         let newPost = {
-            message: this.state.updates.newPostText,
+            message: this._state.updates.newPostText,
             id: 5,
             likesCount: 0,
         };
-        this.state.updates.postsData.push(newPost);
-        this.state.updates.newPostText = '';
+        this._state.updates.postsData.push(newPost);
+        this._state.updates.newPostText = '';
         this._callSubscriber(this.state);
     },
+
     updateNewPostText(newText) {
-        this.state.updates.newPostText = newText;
+        this._state.updates.newPostText = newText;
         this._callSubscriber(this.state);
     },
+
     subscribe(observer) {
         this._callSubscriber = observer;
     },
