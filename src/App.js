@@ -8,6 +8,7 @@ import Chat from './components/Chat/Chat';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 const App = (props) => {
+    console.log(props.state);
     return (
         <BrowserRouter>
             <div className="App">
@@ -25,9 +26,10 @@ const App = (props) => {
                     />
                     <Route
                         path="/updates"
-                        element={<Updates postsData={props.state.updates.postsData} addPost={props.addPost}
+                        element={<Updates postsData={props.state.updates.postsData}
+                                          dispatch={props.dispatch}
                                           newPostText={props.state.updates.newPostText}
-                                          updateNewPostText={props.updateNewPostText}/>}
+                        />}
                     />
                 </Routes>
                 <Footer/>

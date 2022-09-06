@@ -32,26 +32,25 @@ let store = {
         return this._state;
     },
 
-    addPost() {
-        let newPost = {
-            message: this._state.updates.newPostText,
-            id: 5,
-            likesCount: 0,
-        };
-        this._state.updates.postsData.push(newPost);
-        this._state.updates.newPostText = '';
-        this._callSubscriber(this.state);
-    },
-
-    updateNewPostText(newText) {
-        this._state.updates.newPostText = newText;
-        this._callSubscriber(this.state);
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                message: this._state.updates.newPostText,
+                id: 5,
+                likesCount: 0,
+            };
+            this._state.updates.postsData.push(newPost);
+            this._state.updates.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.updates.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+    }
 };
 
 export default store;
