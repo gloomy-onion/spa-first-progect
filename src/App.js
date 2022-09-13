@@ -8,7 +8,6 @@ import Chat from './components/Chat/Chat';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 const App = (props) => {
-    console.log(props.state);
     return (
         <BrowserRouter>
             <div className="App">
@@ -21,6 +20,7 @@ const App = (props) => {
                             <Chat
                                 messageContent={props.state.chat.messageContent}
                                 dialogueInfo={props.state.chat.dialogueInfo}
+                                store={props.store}
                             />
                         }
                     />
