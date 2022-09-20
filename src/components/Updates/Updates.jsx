@@ -2,23 +2,23 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './Updates.module.css';
 import cn from 'classnames';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../state/updates-reducer';
 
     const Updates = (props) => {
-    const {dispatch, newPostText, postsData} = props;
+    const {newPostText, postsData} = props;
     const newPostElement = React.createRef();
-    const addPost = () => {
-        dispatch(addPostActionCreator());
+
+    const onAddPost = () => {
+        props.addPost();
     };
 
     const onPostChange = () => {
         const text = newPostElement.current.value;
-        dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     };
     return (<div className={cn(styles.posts)}>
         <h3>Our Thoughts and Updates</h3>
         <textarea ref={newPostElement} value={newPostText} onChange={onPostChange}/>
-        <button onClick={addPost}>Post</button>
+        <button onClick={onAddPost}>Post</button>
         <button>Remove</button>
         <div className={styles.posts}>
             {postsData.map((data) => {
