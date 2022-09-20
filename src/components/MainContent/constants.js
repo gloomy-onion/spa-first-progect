@@ -1,8 +1,8 @@
-import firstCatImg from './../../img/hall.jpeg';
-import secondCatImg from './../../img/bathroom.jpeg';
-import thirdCatImg from './../../img/livingroom.jpeg';
-import fourthCatImg from './../../img/toilet.jpeg';
-import fifthCatImg from './../../img/bedroom.jpeg';
+import firstCatImg from '../../assets/img/hall.jpeg';
+import secondCatImg from '../../assets/img/bathroom.jpeg';
+import thirdCatImg from '../../assets/img/livingroom.jpeg';
+import fourthCatImg from '../../assets/img/toilet.jpeg';
+import fifthCatImg from '../../assets/img/bedroom.jpeg';
 
 export const CARDS_INFO = [
     {

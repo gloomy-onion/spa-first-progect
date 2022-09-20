@@ -1,5 +1,5 @@
 import React from 'react';
-import frontPageImg from './../../img/first-page.png';
+import frontPageImg from '../../assets/img/first-page.png';
 import {CARDS_INFO} from './constants';
 import styles from './MainContent.module.css';
 
