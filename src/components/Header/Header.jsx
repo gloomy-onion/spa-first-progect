@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImage from './../../img/jordan.png';
+import logoImage from '../../assets/img/jordan.png';
 import NavBar from '../NavBar/NavBar';
 import styles from './Header.module.css';
 

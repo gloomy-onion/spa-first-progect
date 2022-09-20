@@ -1,9 +1,9 @@
 import React from 'react';
-import list from './../../img/list.png';
+import list from '../../assets/img/list.png';
 import styles from './NavBar.module.css';
 import cn from 'classnames';
 import linksPath from './linksPath';
-import {NavigationLink} from '../common/common';
+import {NavigationLink} from '../common/NavigationLink/NavigationLink';
 
 const NavBar = () => {
     return (

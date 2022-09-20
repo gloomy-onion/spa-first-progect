@@ -79,7 +79,3 @@ nav a {
         display: none;
     }
 }
-
-.active {
-    text-decoration: line-through;
-}
