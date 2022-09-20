@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Chat.module.css';
 import ChatItem from './ChatItem/ChatItem';
 import Message from './Message/Message';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../state/state';
+import {sendMessageCreator, updateNewMessageBodyCreator} from '../../state/store';
 
 
 const Chat = (props) => {
