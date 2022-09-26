@@ -1,7 +1,7 @@
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
-let initialState = {
+const initialState = {
     dialogueInfo: [
         {userName: 'Color', id: '1'},
         {userName: 'Floor', id: '2'},
@@ -14,7 +14,7 @@ let initialState = {
         {id: 2, messageText: 'Your order is delayed'},
         {id: 3, messageText: 'Your color has been changed'},
     ],
-    newMessageBody: '',
+    newMessageBody: 'la-la-la',
 };
 
 const chatReducer = (state = initialState, action) => {
@@ -26,6 +26,7 @@ const chatReducer = (state = initialState, action) => {
             const body = state.newMessageBody;
             state.newMessageBody = action.body;
             state.messageContent.push({id: 4, messageText: body});
+            state.newMessageBody = '';
             return state;
         default:
             return state;

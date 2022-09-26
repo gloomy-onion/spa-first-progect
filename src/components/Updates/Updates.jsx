@@ -2,18 +2,19 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './Updates.module.css';
 import cn from 'classnames';
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../state/updates-reducer';
 
     const Updates = (props) => {
     const {newPostText, postsData} = props;
     const newPostElement = React.createRef();
 
     const onAddPost = () => {
-        props.addPost();
+        props.dispatch(addPostActionCreator());
     };
 
     const onPostChange = () => {
         const text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.dispatch(updateNewPostTextActionCreator(text));
     };
     return (<div className={cn(styles.posts)}>
         <h3>Our Thoughts and Updates</h3>

@@ -6,44 +6,42 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from '../../state/chat-
 
 
 const Chat = (props) => {
-    const newMessageBody = props.newMessageBody;
+    const {newMessageBody} = props;
     const onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.dispatch(sendMessageCreator());
 
     };
     const onNewMessageChange = (event) => {
         const body = event.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.dispatch(updateNewMessageBodyCreator(body));
     };
-    return (
-        <div className={styles.dialogues}>
-            <div className={styles.dialoguesItems}>
-                <div className={styles.dialogue}>
-                    {props.dialogueInfo.map((dialogue) => {
-                        return (
-                            <ChatItem
-                                to={dialogue.to}
-                                userName={dialogue.userName}
-                                id={dialogue.id}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
-            <div className={styles.messages}>
-                {props.messageContent.map((text) => {
-                    return <Message messageText={text.messageText}/>;
+    return (<div className={styles.dialogues}>
+        <div className={styles.dialoguesItems}>
+            <div className={styles.dialogue}>
+                {props.dialogueInfo.map((dialogue) => {
+                    return (<ChatItem
+                        to={dialogue.to}
+                        userName={dialogue.userName}
+                        id={dialogue.id}
+                    />);
                 })}
-                <div className={styles.textArea}>
-                    <div><textarea value={newMessageBody} onChange={onNewMessageChange}
-                                   placeholder="Enter your message"/></div>
-                    <div>
-                        <button onClick={onSendMessageClick}>Send</button>
-                    </div>
+            </div>
+        </div>
+        <div className={styles.messages}>
+            {props.messageContent.map((text) => {
+                return <Message messageText={text.messageText}/>;
+            })}
+            <div>
+                <div>
+                        <textarea value={newMessageBody} onChange={onNewMessageChange}
+                                  placeholder="Enter your message"/>
+                </div>
+                <div>
+                    <button onClick={onSendMessageClick}>Send</button>
                 </div>
             </div>
         </div>
-    );
+    </div>);
 };
 
 export default Chat;

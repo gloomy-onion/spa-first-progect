@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-let initialState = {
+const initialState = {
     postsData: [
         {message: 'Hi', id: 1, likesCount: 20},
         {message: 'bye', id: 2, likesCount: 0},

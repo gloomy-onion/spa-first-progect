@@ -42,8 +42,7 @@ const store = {
 
     dispatch(action) {
         this._state.updates = updatesReducer(this._state.updates, action);
-        this._state.сhat = chatReducer(this._state.chat, action);
-
+        this._state.chat = chatReducer(this._state.chat, action);
         this._callSubscriber(this._state);
     }
 };

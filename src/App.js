@@ -20,6 +20,8 @@ const App = (props) => {
                             <Chat
                                 messageContent={props.state.chat.messageContent}
                                 dialogueInfo={props.state.chat.dialogueInfo}
+                                dispatch={props.dispatch}
+                                newMessageBody={props.state.chat.newMessageBody}
                             />
                         }
                     />
