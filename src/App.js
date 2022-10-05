@@ -4,39 +4,29 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import MainContent from './components/MainContent/MainContent';
 import Updates from './components/Updates/Updates';
-import Chat from './components/Chat/Chat';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Chat from './components/Chat/Chat';
 
-const App = (props) => {
-    return (
-        <BrowserRouter>
-            <div className="App">
-                <Header/>
-                <Routes>
-                    <Route exact path="/" element={<MainContent/>}/>
-                    <Route
-                        path="/chat"
-                        element={
-                            <Chat
-                                messageContent={props.state.chat.messageContent}
-                                dialogueInfo={props.state.chat.dialogueInfo}
-                                dispatch={props.dispatch}
-                                newMessageBody={props.state.chat.newMessageBody}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/updates"
-                        element={<Updates postsData={props.state.updates.postsData}
-                                          dispatch={props.dispatch}
-                                          newPostText={props.state.updates.newPostText}
-                        />}
-                    />
-                </Routes>
-                <Footer/>
-            </div>
-        </BrowserRouter>
-    );
+const App = () => {
+    return (<BrowserRouter>
+        <div className="App">
+            <Header/>
+            <Routes>
+                <Route
+                    exact path="/"
+                    element={<MainContent/>}/>
+                <Route
+                    path="/chat"
+                    element={<Chat/>}
+                />
+                <Route
+                    path="/updates"
+                    element={<Updates/>}
+                />
+            </Routes>
+            <Footer/>
+        </div>
+    </BrowserRouter>);
 };
 
 export default App;

@@ -2,20 +2,17 @@ import React from 'react';
 import styles from './Chat.module.css';
 import ChatItem from './ChatItem/ChatItem';
 import Message from './Message/Message';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../state/chat-reducer';
-
 
 const Chat = (props) => {
     const {newMessageBody} = props;
     const onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator());
-
+        props.sendMessage();
     };
     const onNewMessageChange = (event) => {
         const body = event.target.value;
-        props.dispatch(updateNewMessageBodyCreator(body));
+        props.updateNewMessageBody(body);
     };
-    return (<div className={styles.dialogues}>
+        return (<div className={styles.dialogues}>
         <div className={styles.dialoguesItems}>
             <div className={styles.dialogue}>
                 {props.dialogueInfo.map((dialogue) => {
@@ -34,7 +31,7 @@ const Chat = (props) => {
             <div>
                 <div>
                         <textarea value={newMessageBody} onChange={onNewMessageChange}
-                                  placeholder="Enter your message"/>
+                                  />
                 </div>
                 <div>
                     <button onClick={onSendMessageClick}>Send</button>
