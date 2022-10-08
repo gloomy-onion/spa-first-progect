@@ -1,30 +1,28 @@
 import React from 'react';
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../state/chat-reducer';
 import Chat from './Chat';
-import StoreContext from '../../state/StoreContext';
 import {connect} from 'react-redux';
 
 
-const ChatContainer = () => {
-    const onSendMessageClick = () => {
-        store.dispatch(sendMessageCreator());
+const mapStateToProps = (state) => {
+    return {
+        dialogueInfo: state.chat.dialogueInfo,
+        messageContent: state.chat.messageContent,
+        newMessageBody: state.chat.newMessageBody
     };
-    const onNewMessageChange = (body) => {
-        store.dispatch(updateNewMessageBodyCreator(body));
-    };
-    return (
-        <StoreContext.Consumer>
-            { store => {
-                const state = store.store.getState();
-                return <Chat updateNewMessageBody={onNewMessageChange} sendMessage={onSendMessageClick}
-                             dialogueInfo={state}/>
-            }
-        };
-        </StoreContext.Consumer> )
 };
 
-let f1
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewMessageBody: (body) => {
+            dispatch(updateNewMessageBodyCreator(body));
+        },
+        sendMessage: () => {
+            dispatch(sendMessageCreator());
+        }
+    };
+};
 
-const SuperChatContainer = connect()(Chat);
+const ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat);
 
 export default ChatContainer;

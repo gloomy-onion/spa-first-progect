@@ -9,12 +9,12 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from '../../state/
     const newPostElement = React.createRef();
 
     const onAddPost = () => {
-        props.dispatch(addPostActionCreator());
+        props.addPost();
     };
 
     const onPostChange = () => {
         const text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     };
     return (<div className={cn(styles.posts)}>
         <h3>Our Thoughts and Updates</h3>

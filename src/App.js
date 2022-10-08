@@ -3,9 +3,9 @@ import './App.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import MainContent from './components/MainContent/MainContent';
-import Updates from './components/Updates/Updates';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Chat from './components/Chat/Chat';
+import ChatContainer from './components/Chat/ChatContainer';
+import MyPostsContainer from './components/Updates/MyPostsConainer';
 
 const App = () => {
     return (<BrowserRouter>
@@ -17,11 +17,11 @@ const App = () => {
                     element={<MainContent/>}/>
                 <Route
                     path="/chat"
-                    element={<Chat/>}
+                    element={<ChatContainer/>}
                 />
                 <Route
                     path="/updates"
-                    element={<Updates/>}
+                    element={<MyPostsContainer/>}
                 />
             </Routes>
             <Footer/>
