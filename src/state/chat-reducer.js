@@ -19,15 +19,21 @@ const initialState = {
 
 const chatReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.body;
-            return state;
+            return {
+                ...state,
+                newMessageBody: action.body,
+            };
+
         case SEND_MESSAGE:
             const body = state.newMessageBody;
-            state.newMessageBody = action.body;
-            state.messageContent.push({id: 4, messageText: body});
-            state.newMessageBody = '';
-            return state;
+            return {
+                ...state,
+                newMessageBody: '',
+                messageContent: [...state.messageContent, {id: 4, messageText: body}]
+            };
+
         default:
             return state;
     }
@@ -38,6 +44,7 @@ export const sendMessageCreator = () => {
         type: SEND_MESSAGE
     };
 };
+
 export const updateNewMessageBodyCreator = (body) => {
     return {
         type: UPDATE_NEW_MESSAGE_BODY, body: body

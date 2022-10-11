@@ -7,17 +7,11 @@ import store from './state/redux-store';
 import {Provider} from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const rerenderEntireTree = () => {
-    root.render(
-        <Provider  store={store}>
-            <App />
-        </Provider>
-    );
-};
-rerenderEntireTree();
+root.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>
+);
 
-store.subscribe(() => {
-    rerenderEntireTree();
-});
 
 reportWebVitals();
