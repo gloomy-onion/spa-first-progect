@@ -2,9 +2,8 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './Updates.module.css';
 import cn from 'classnames';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../state/updates-reducer';
 
-    const Updates = (props) => {
+const Updates = (props) => {
     const {newPostText, postsData} = props;
     const newPostElement = React.createRef();
 
