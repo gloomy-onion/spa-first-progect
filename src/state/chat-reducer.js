@@ -47,7 +47,7 @@ export const sendMessageCreator = () => {
 
 export const updateNewMessageBodyCreator = (body) => {
     return {
-        type: UPDATE_NEW_MESSAGE_BODY, body: body
+        type: UPDATE_NEW_MESSAGE_BODY, payload: body
     };
 };
 
