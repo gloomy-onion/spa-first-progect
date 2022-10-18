@@ -5,7 +5,7 @@ const initialState = {
     postsData: [
         {message: 'Hi', id: 1, likesCount: 20},
         {message: 'bye', id: 2, likesCount: 0},
-        {message: 'bye', id: 2, likesCount: 88},
+        {message: 'bye', id: 3, likesCount: 88},
     ],
     newPostText: 'blah-blah'
 };
