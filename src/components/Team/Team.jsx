@@ -12,7 +12,6 @@ const Team = (props) => {
                 })
         }
     }
-    console.log(props.users)
     return <div>
         <button onClick={getUsers}>Get Users</button>
         {
