@@ -3,7 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 const initialState = {
-    users: {},
+    users: [],
     newPostText: 'blah-blah'
 };
 
