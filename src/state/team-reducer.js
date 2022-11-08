@@ -5,6 +5,9 @@ const SET_USERS = "SET_USERS";
 const initialState = {
   users: [],
   newPostText: "blah-blah",
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 const teamReducer = (state = initialState, action) => {

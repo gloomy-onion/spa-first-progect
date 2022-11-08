@@ -10,6 +10,9 @@ import {
 const mapStateToProps = (state) => {
   return {
     users: state.teamPage.users,
+    pageSize: state.teamPage.pageSize,
+    totalUsersCount: state.teamPage.totalUsersCount,
+    currentPage: state.teamPage.currentPage,
   };
 };
 
