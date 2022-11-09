@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import Team from "./Team";
 import {
   followActionCreator,
+  setCurrentPageActionCreator, setTotalUsersCountActionCreator,
   setUsersActionCreator,
   unfollowActionCreator,
-} from "../../state/team-reducer";
+} from '../../state/team-reducer';
 
 const mapStateToProps = (state) => {
   return {
@@ -26,6 +27,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setUsers: (users) => {
       dispatch(setUsersActionCreator(users));
+    },
+    setCurrentPage: (pageNumber) => {
+      dispatch(setCurrentPageActionCreator(pageNumber));
+    },
+    setTotalUsersCount: (totalCount) => {
+      dispatch(setTotalUsersCountActionCreator(totalCount));
     },
   };
 };

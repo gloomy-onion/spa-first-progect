@@ -22,7 +22,7 @@ const chatReducer = (state = initialState, action) => {
     case UPDATE_NEW_MESSAGE_BODY:
       return {
         ...state,
-        newMessageBody: action.payload,
+        newMessageBody: action.payload ,
       };
 
     case SEND_MESSAGE:
