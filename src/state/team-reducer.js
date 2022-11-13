@@ -18,7 +18,7 @@ const teamReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((u) => {
-          if (u.id === action.userId) {
+          if (u.id === action.payload) {
             return { ...u, followed: true };
           }
           return u;
@@ -30,7 +30,7 @@ const teamReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((u) => {
-          if (u.id === action.userId) {
+          if (u.id === action.payload) {
             return { ...u, followed: false };
           }
           return u;
@@ -70,7 +70,7 @@ export const followActionCreator = (userId) => ({
 
 export const unfollowActionCreator = (userId) => ({
   type: UNFOLLOW,
-  userId,
+  payload: userId,
 });
 
 export const setUsersActionCreator = (users) => ({
