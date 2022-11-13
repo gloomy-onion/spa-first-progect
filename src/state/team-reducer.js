@@ -3,13 +3,14 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 const initialState = {
   users: [],
-  newPostText: "blah-blah",
   pageSize: 5,
   totalUsersCount: 0,
   currentPage: 1,
+  isFetching: false,
 };
 
 const teamReducer = (state = initialState, action) => {
@@ -51,10 +52,18 @@ const teamReducer = (state = initialState, action) => {
         currentPage: action.currentPage,
       };
     }
+
     case SET_TOTAL_USERS_COUNT: {
       return {
         ...state,
         totalUsersCount: action.payload,
+      };
+    }
+
+    case TOGGLE_IS_FETCHING: {
+      return {
+        ...state,
+        isFetching: action.payload,
       };
     }
 
@@ -77,13 +86,20 @@ export const setUsersActionCreator = (users) => ({
   type: SET_USERS,
   users,
 });
+
 export const setCurrentPageActionCreator = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
+
 export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   payload: totalUsersCount,
+});
+
+export const toggleIsFetchingActionCreator = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  payload: isFetching,
 });
 
 export default teamReducer;
