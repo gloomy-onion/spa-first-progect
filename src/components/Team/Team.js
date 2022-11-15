@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./team.module.css";
 import userImage from "../../assets/img/userImage.png";
+import { NavLink } from "react-router-dom";
 
 const Team = (props) => {
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -30,11 +31,13 @@ const Team = (props) => {
         <div key={u.id}>
           <span>
             <div>
-              <img
-                src={u.photos.small != null ? u.photos.small : userImage}
-                className={styles.userPhoto}
-                alt={""}
-              />
+              <NavLink to={'/profile' + u.id}>
+                <img
+                  src={u.photos.small != null ? u.photos.small : userImage}
+                  className={styles.userPhoto}
+                  alt={""}
+                />
+              </NavLink>
             </div>
             <div>
               {" "}
