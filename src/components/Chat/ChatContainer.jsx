@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  sendMessageCreator,
-  updateNewMessageBodyCreator,
-} from "../../state/chat-reducer";
+import { sendMessage, updateNewMessageBody } from "../../state/chat-reducer";
 import Chat from "./Chat";
 import { connect } from "react-redux";
 
@@ -14,17 +11,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateNewMessageBody: (body) => {
-      dispatch(updateNewMessageBodyCreator(body));
-    },
-    sendMessage: () => {
-      dispatch(sendMessageCreator());
-    },
-  };
-};
-
-const ChatContainer = connect(mapStateToProps, mapDispatchToProps)(Chat);
+const ChatContainer = connect(mapStateToProps, {
+  updateNewMessageBody,
+  sendMessage,
+})(Chat);
 
 export default ChatContainer;
