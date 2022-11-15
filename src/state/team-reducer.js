@@ -42,14 +42,14 @@ const teamReducer = (state = initialState, action) => {
     case SET_USERS: {
       return {
         ...state,
-        users: action.users,
+        users: action.payload,
       };
     }
 
     case SET_CURRENT_PAGE: {
       return {
         ...state,
-        currentPage: action.currentPage,
+        currentPage: action.payload,
       };
     }
 
@@ -72,32 +72,32 @@ const teamReducer = (state = initialState, action) => {
   }
 };
 
-export const followActionCreator = (userId) => ({
+export const follow = (userId) => ({
   type: FOLLOW,
   payload: userId,
 });
 
-export const unfollowActionCreator = (userId) => ({
+export const unfollow = (userId) => ({
   type: UNFOLLOW,
   payload: userId,
 });
 
-export const setUsersActionCreator = (users) => ({
+export const setUsers = (users) => ({
   type: SET_USERS,
-  users,
+  payload: users,
 });
 
-export const setCurrentPageActionCreator = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
-  currentPage,
+  payload: currentPage,
 });
 
-export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
+export const setTotalUsersCount = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   payload: totalUsersCount,
 });
 
-export const toggleIsFetchingActionCreator = (isFetching) => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   payload: isFetching,
 });
