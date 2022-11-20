@@ -5,18 +5,19 @@ const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
-  const ContactWebsites = Object.entries(props.profile.contacts).map(
-    ([key, value]) => `${key[0].toUpperCase() + key.slice(1)}: ${value} `
-  );
+  const RenderContacts = (profile) => {
+    const contactWebsites = Object.entries(props.profile.contacts).map(
+      ([name, link]) => `${name[0].toUpperCase() + name.slice(1)}: ${link} `
+    );
+    return <div> {contactWebsites} </div>;
+  };
 
   return (
     <div>
       <img src={props.profile.photos.large} alt={""} />
       <div>{props.profile.aboutMe}</div>
       <div>Contacts:</div>
-      <div>
-        <span>{ContactWebsites}</span>
-      </div>
+        <RenderContacts />
     </div>
   );
 };
