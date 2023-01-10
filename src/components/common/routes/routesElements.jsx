@@ -9,7 +9,7 @@ const routesElements = [
   { exact: false, path: "/chat", element: <ChatContainer /> },
   { exact: false, path: "/updates", element: <MyPostsContainer /> },
   { exact: false, path: "/team", element: <TeamContainer /> },
-  { exact: false, path: "/profile", element: <ProfileContainer /> },
+  { exact: false, path: "/profile/:userId?", element: <ProfileContainer /> },
 ];
 
 export default routesElements;

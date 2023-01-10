@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.module.css";
 import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routesElements from "./components/common/routes/routesElements";
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const renderPath = () =>
   routesElements.map(({ path, exact, element }) => (
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <HeaderContainer />
         <Routes>{renderPath()}</Routes>
         <Footer />
       </div>
