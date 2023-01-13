@@ -3,11 +3,11 @@ import Profile from "./Profile";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../state/updates-reducer";
-import {withRouter} from 'react-router-dom';
+import withRouter from '../../hoc/withRouter';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
+    let userId = this.props.router.params.userId;
     if (!userId) {
       userId = 2;
     }
