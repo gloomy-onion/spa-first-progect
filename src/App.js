@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.module.css";
 import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routesElements from "./components/common/routes/routesElements";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const renderPath = () =>
   routesElements.map(({ path, exact, element }) => (
@@ -14,8 +15,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
-        <Routes>{renderPath()}</Routes>
+        <HeaderContainer />
+        <Routes>
+          {renderPath()}
+          <Route path={"/profile"}>
+            <Route path={":userId"} element={<ProfileContainer />} />
+            <Route path={""} element={<ProfileContainer />} />
+          </Route>
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>

@@ -4,5 +4,6 @@ const linksPath = [
   { to: "/updates", text: "Updates" },
   { to: "/profile", text: "Profile" },
   { to: "/team", text: "Team" },
+  { to: "/login", text: "Login" },
 ];
 export default linksPath;
