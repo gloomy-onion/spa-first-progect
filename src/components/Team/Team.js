@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./team.module.css";
 import userImage from "../../assets/img/userImage.png";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../api/api";
 
 const Team = (props) => {
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -31,7 +32,7 @@ const Team = (props) => {
         <div key={u.id}>
           <span>
             <div>
-              <NavLink to={'/profile/' + u.id}>
+              <NavLink to={"/profile/" + u.id}>
                 <img
                   src={u.photos.small != null ? u.photos.small : userImage}
                   className={styles.userPhoto}
@@ -43,8 +44,15 @@ const Team = (props) => {
               {" "}
               {u.followed ? (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.unfollow(u.id);
+                    props.toggleFollowingProgress(true, u.id);
+                    usersAPI.unfollow(u).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.unfollow(u.id);
+                      }
+                      props.toggleFollowingProgress(false, u.id);
+                    });
                   }}
                 >
                   {" "}
@@ -52,8 +60,15 @@ const Team = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
-                    props.follow(u.id);
+                    props.toggleFollowingProgress(true, u.id);
+                    usersAPI.follow(u).then((data) => {
+                      if (data.resultCode === 0) {
+                        props.follow(u.id);
+                      }
+                      props.toggleFollowingProgress(false, u.id);
+                    });
                   }}
                 >
                   {" "}
