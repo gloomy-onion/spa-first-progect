@@ -3,7 +3,7 @@ import logoImage from "../../assets/img/jordan.png";
 import NavBar from "../NavBar/NavBar";
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className={styles.AppHeader}>
       <div className={styles.headerContainer}>

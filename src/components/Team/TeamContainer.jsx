@@ -1,42 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  follow,
+  follow, getUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  setUsers,
-  toggleIsFetching,
+  toggleFollowingProgress,
   unfollow,
-} from "../../state/team-reducer";
-import axios from "axios";
+} from '../../state/team-reducer';
 import Team from "./Team";
 import Preloader from "../common/Preloader/Preloader";
 
 class TeamContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-        this.props.toggleIsFetching(false);
-      });
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.toggleIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-      });
-    this.props.toggleIsFetching(false);
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
 
   render() {
@@ -51,6 +30,8 @@ class TeamContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          toggleFollowingProgress={this.props.toggleFollowingProgress}
+          followingInProgress={this.props.followingInProgress}
         />
       </>
     );
@@ -64,14 +45,14 @@ const mapStateToProps = (state) => {
     totalUsersCount: state.teamPage.totalUsersCount,
     currentPage: state.teamPage.currentPage,
     isFetching: state.teamPage.isFetching,
+    followingInProgress: state.teamPage.followingInProgress,
   };
 };
 
 export default connect(mapStateToProps, {
   follow,
   unfollow,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
+  toggleFollowingProgress,
+  getUsers,
 })(TeamContainer);

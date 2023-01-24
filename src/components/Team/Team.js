@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./team.module.css";
 import userImage from "../../assets/img/userImage.png";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../api/api";
 
 const Team = (props) => {
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -27,13 +28,15 @@ const Team = (props) => {
           );
         })}
       </div>
-      {props.users.map((u) => (
-        <div key={u.id}>
+      {props.users.map((user) => (
+        <div key={user.id}>
           <span>
             <div>
-              <NavLink to={'/profile/' + u.id}>
+              <NavLink to={"/profile/" + user.id}>
                 <img
-                  src={u.photos.small != null ? u.photos.small : userImage}
+                  src={
+                    user.photos.small != null ? user.photos.small : userImage
+                  }
                   className={styles.userPhoto}
                   alt={""}
                 />
@@ -41,10 +44,13 @@ const Team = (props) => {
             </div>
             <div>
               {" "}
-              {u.followed ? (
+              {user.followed ? (
                 <button
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
                   onClick={() => {
-                    props.unfollow(u.id);
+                    props.unfollow(user);
                   }}
                 >
                   {" "}
@@ -52,8 +58,11 @@ const Team = (props) => {
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
                   onClick={() => {
-                    props.follow(u.id);
+                    props.follow(user);
                   }}
                 >
                   {" "}
@@ -64,12 +73,12 @@ const Team = (props) => {
           </span>
           <span>
             <span>
-              <div>{u.name}</div>
-              <div>{u.status}</div>
+              <div>{user.name}</div>
+              <div>{user.status}</div>
             </span>
             <span>
-              <div>{"u.location.country"}</div>
-              <div>{"u.location.city"}</div>
+              <div>{"user.location.country"}</div>
+              <div>{"user.location.city"}</div>
             </span>
           </span>
         </div>
