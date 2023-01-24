@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -20,11 +22,11 @@ const teamReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.payload) {
-            return { ...u, followed: true };
+        users: state.users.map((user) => {
+          if (user.id === action.payload) {
+            return { ...user, followed: true };
           }
-          return u;
+          return user;
         }),
       };
     }
@@ -32,11 +34,11 @@ const teamReducer = (state = initialState, action) => {
     case UNFOLLOW: {
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.payload) {
-            return { ...u, followed: false };
+        users: state.users.map((user) => {
+          if (user.id === action.payload) {
+            return { ...user, followed: false };
           }
-          return u;
+          return user;
         }),
       };
     }
@@ -71,10 +73,13 @@ const teamReducer = (state = initialState, action) => {
 
     case TOGGLE_IS_FOLLOWING_PROGRESS: {
       return {
+        ...state,
         followingInProgress: action.isFetching
-          ? [...state.followingInProgress, action.userId]
-          : [state.followingInProgress.filter((id) => id != action.userId)],
-        isFetching: action.payload,
+          ? [...state.followingInProgress, action.payload.userId]
+          : state.followingInProgress.filter(
+              (id) => id !== action.payload.userId
+            ),
+        isFetching: action.payload.isFetching,
       };
     }
 
@@ -83,12 +88,12 @@ const teamReducer = (state = initialState, action) => {
   }
 };
 
-export const follow = (userId) => ({
+export const followSuccess = (userId) => ({
   type: FOLLOW,
   payload: userId,
 });
 
-export const unfollow = (userId) => ({
+export const unfollowSuccess = (userId) => ({
   type: UNFOLLOW,
   payload: userId,
 });
@@ -115,8 +120,43 @@ export const toggleIsFetching = (isFetching) => ({
 
 export const toggleFollowingProgress = (isFetching, userId) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS,
-  payload: isFetching,
-  userId
+  payload: { isFetching, userId },
 });
+
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(setUsers(data.items));
+      dispatch(setCurrentPage(currentPage));
+      dispatch(setTotalUsersCount(data.totalCount));
+      dispatch(toggleIsFetching(false));
+    });
+  };
+};
+
+export const follow = (user) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, user.id));
+    usersAPI.follow(user).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(followSuccess(user.id));
+      }
+      dispatch(toggleFollowingProgress(false, user.id));
+    });
+  };
+};
+
+export const unfollow = (user) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, user.id));
+    usersAPI.unfollow(user).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(unfollowSuccess(user.id));
+      }
+      dispatch(toggleFollowingProgress(false, user.id));
+    });
+  };
+};
 
 export default teamReducer;
