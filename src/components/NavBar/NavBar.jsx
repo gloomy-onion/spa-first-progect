@@ -2,19 +2,21 @@ import React from "react";
 import list from "../../assets/img/list.png";
 import styles from "./NavBar.module.css";
 import cn from "classnames";
-import linksPath from "./linksPath";
+import basePath from "./basePath";
 import { NavigationLink } from "../common/NavigationLink/NavigationLink";
 
-const NavBar = () => {
+const NavBar = (props) => {
+
   return (
     <nav>
       <div className={cn(styles.show, styles.dropdown)}>
         <img className={styles.list} src={list} alt={""} />
         <div className={styles.dropdownContent}>
           <div className={styles.dropdown}>
-            {linksPath.map((path) => {
+            {basePath.map((path) => {
               return <NavigationLink to={path.to} text={path.text} />;
             })}
+              {props.isAuth ? props.login : <NavigationLink to={"/login"} text={"Login"} />}
           </div>
         </div>
       </div>
