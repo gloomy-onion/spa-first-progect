@@ -4,7 +4,6 @@ import Chat from "./Chat";
 import { connect } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
-import withRouter from '../../hoc/withRouter';
 
 const mapStateToProps = (state) => {
   return {

@@ -3,9 +3,7 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile } from "../../state/updates-reducer";
 import withRouter from "../../hoc/withRouter";
-import { Navigate } from "react-router";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import Chat from "../Chat/Chat";
 import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
