@@ -2,6 +2,9 @@ import React from "react";
 import { sendMessage, updateNewMessageBody } from "../../state/chat-reducer";
 import Chat from "./Chat";
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
+import withRouter from '../../hoc/withRouter';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,9 +14,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ChatContainer = connect(mapStateToProps, {
-  updateNewMessageBody,
-  sendMessage,
-})(Chat);
-
-export default ChatContainer;
+export default compose(
+  connect(mapStateToProps, {
+    updateNewMessageBody,
+    sendMessage,
+  }),
+  withAuthRedirect
+)(Chat);

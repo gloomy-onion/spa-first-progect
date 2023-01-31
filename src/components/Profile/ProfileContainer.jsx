@@ -2,7 +2,11 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile } from "../../state/updates-reducer";
-import withRouter from '../../hoc/withRouter';
+import withRouter from "../../hoc/withRouter";
+import { Navigate } from "react-router";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import Chat from "../Chat/Chat";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -10,7 +14,7 @@ class ProfileContainer extends React.Component {
     if (!userId) {
       userId = 2;
     }
-this.props.getUserProfile(userId);
+    this.props.getUserProfile(userId);
   }
 
   render() {
@@ -24,9 +28,12 @@ this.props.getUserProfile(userId);
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.updates.profile
+    profile: state.updates.profile,
   };
 };
-const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
+export default compose(
+  connect(mapStateToProps, { getUserProfile }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);

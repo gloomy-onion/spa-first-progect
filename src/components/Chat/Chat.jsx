@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
+import {Navigate} from 'react-router';
 
 const Chat = (props) => {
   const { newMessageBody, messageContent, dialogueInfo } = props;
@@ -12,6 +13,9 @@ const Chat = (props) => {
     const body = event.target.value;
     props.updateNewMessageBody(body);
   };
+
+if (!props.isAuth) return <Navigate to={'/login'}/>
+
   return (
     <div className={styles.dialogues}>
       <div className={styles.dialoguesItems}>

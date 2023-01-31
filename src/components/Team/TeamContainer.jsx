@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  follow, getUsers,
+  follow,
+  getUsers,
   setCurrentPage,
   toggleFollowingProgress,
   unfollow,
-} from '../../state/team-reducer';
+} from "../../state/team-reducer";
 import Team from "./Team";
 import Preloader from "../common/Preloader/Preloader";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class TeamContainer extends React.Component {
   componentDidMount() {
@@ -49,10 +52,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  toggleFollowingProgress,
-  getUsers,
-})(TeamContainer);
+export default compose(
+    withAuthRedirect,
+  connect(
+    mapStateToProps,
+    {
+      follow,
+      unfollow,
+      setCurrentPage,
+      toggleFollowingProgress,
+      getUsers,
+    }))(TeamContainer);
