@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 class ProfileStatus extends React.Component {
   state = {
     editMode: false,
@@ -34,6 +36,7 @@ class ProfileStatus extends React.Component {
   }
 
   render() {
+    console.log(this.state.status);
     return (
       <div>
         {!this.state.editMode && (
