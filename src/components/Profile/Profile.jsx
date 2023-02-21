@@ -3,9 +3,13 @@ import MyPostsContainer from "../Updates/MyPostsConainer";
 import ProfileInfo from "../Profile/ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
-    return (
+  return (
     <div>
-      <ProfileInfo profile={props.profile}/>
+      <ProfileInfo
+        profile={props.profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+      />
       <MyPostsContainer />
     </div>
   );

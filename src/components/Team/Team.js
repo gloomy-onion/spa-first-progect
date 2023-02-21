@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./team.module.css";
 import userImage from "../../assets/img/userImage.png";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
 const Team = (props) => {
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);

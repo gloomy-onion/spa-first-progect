@@ -4,12 +4,14 @@ import chatReducer from "./chat-reducer";
 import teamReducer from "./team-reducer";
 import authReducer from './auth-reducer';
 import thunkMiddleware from "redux-thunk";
+import viewerReducer from './viewer-reducer';
 
 const reducers = combineReducers({
   updates: updatesReducer,
   chat: chatReducer,
   teamPage: teamReducer,
   auth: authReducer,
+  viewer: viewerReducer
 });
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
