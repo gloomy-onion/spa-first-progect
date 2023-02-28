@@ -2,29 +2,19 @@ import React from "react";
 import Post from "./Post/Post";
 import styles from "./Updates.module.css";
 import cn from "classnames";
+import {Field, reduxForm} from 'redux-form';
 
 const Updates = (props) => {
-  const { newPostText, postsData } = props;
-  const newPostElement = React.createRef();
+  const { postsData } = props;
 
-  const onAddPost = () => {
-    props.addPost();
+  const onAddPost = (values) => {
+    props.addPost(values.newPostText);
   };
 
-  const onPostChange = () => {
-    const text = newPostElement.current.value;
-    props.updateNewPostText(text);
-  };
   return (
     <div className={cn(styles.posts)}>
       <h3>Our Thoughts and Updates</h3>
-      <textarea
-        ref={newPostElement}
-        value={newPostText}
-        onChange={onPostChange}
-      />
-      <button onClick={onAddPost}>Post</button>
-      <button>Remove</button>
+<AddNewPostForm onSubmit={onAddPost}/>
       <div className={styles.posts}>
         {postsData.map((data) => {
           return (
@@ -39,4 +29,21 @@ const Updates = (props) => {
     </div>
   );
 };
+
+let AddNewPostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field name={'newPostText'} component={'textarea'}
+        />
+      </div>
+      <div>
+        <button>Post</button>
+      </div>
+    </form>
+  );
+};
+
+AddNewPostForm = reduxForm({form: 'UpdatesAddNewPostForm'})(AddNewPostForm)
+
 export default Updates;

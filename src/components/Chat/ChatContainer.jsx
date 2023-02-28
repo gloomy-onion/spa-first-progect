@@ -1,5 +1,5 @@
 import React from "react";
-import { sendMessage, updateNewMessageBody } from "../../state/chat-reducer";
+import { sendMessage } from "../../state/chat-reducer";
 import Chat from "./Chat";
 import { connect } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
-    updateNewMessageBody,
     sendMessage,
   }),
   withAuthRedirect

@@ -2,15 +2,14 @@ import React from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
+import Field from "redux-form/lib/Field";
+import { reduxForm } from "redux-form";
 
 const Chat = (props) => {
-  const { newMessageBody, messageContent, dialogueInfo } = props;
-  const onSendMessageClick = () => {
-    props.sendMessage();
-  };
-  const onNewMessageChange = (event) => {
-    const body = event.target.value;
-    props.updateNewMessageBody(body);
+  const { messageContent, dialogueInfo } = props;
+
+  const addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
   };
 
   return (
@@ -33,16 +32,29 @@ const Chat = (props) => {
           return <Message messageText={text.messageText} />;
         })}
         <div>
-          <div>
-            <textarea value={newMessageBody} onChange={onNewMessageChange} />
-          </div>
-          <div>
-            <button onClick={onSendMessageClick}>Send</button>
-          </div>
+          <AddMessageForm onSubmit={addNewMessage} />
         </div>
       </div>
     </div>
   );
 };
+
+let AddMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          component={"textarea"}
+          name={"newMessageBody"}
+          placeholder={"Enter your message"}
+        />
+      </div>
+      <div>
+        <button>Send</button>
+      </div>
+    </form>
+  );
+};
+AddMessageForm = reduxForm({ form: "chatAddMessageForm" })(AddMessageForm);
 
 export default Chat;

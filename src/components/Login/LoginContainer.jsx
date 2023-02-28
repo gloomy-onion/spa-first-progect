@@ -17,7 +17,7 @@ const LoginForm = (props) => {
           />
         </div>
         <div>
-          <Field type={"checkbox"} name={"rememberMe"} component={"input"} />{" "}
+          <Field type={"checkbox"} name={"rememberMe"} component={"input"} />
           remember me
         </div>
         <div>
@@ -33,12 +33,10 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
-  const onSubmit = (formData) => {
-
-  }
+  const onSubmit = (formData) => {};
   return (
     <>
-      <LoginReduxForm onSubmit={onSubmit}/>
+      <LoginReduxForm onSubmit={onSubmit} />
     </>
   );
 };
