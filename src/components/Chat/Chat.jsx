@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
-import Field from "redux-form/lib/Field";
-import { reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 
 const Chat = (props) => {
   const { messageContent, dialogueInfo } = props;
@@ -55,6 +54,7 @@ let AddMessageForm = (props) => {
     </form>
   );
 };
+
 AddMessageForm = reduxForm({ form: "chatAddMessageForm" })(AddMessageForm);
 
 export default Chat;
