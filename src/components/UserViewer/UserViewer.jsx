@@ -1,9 +1,9 @@
 import React from "react";
-
+import ProfileInfo from "../Profile/ProfileInfo/ProfileInfo";
 
 const UserViewer = (props) => {
   const onUserClick = (userId) => {
-    props.setCurrentUser(userId)
+    props.setCurrentUser(userId);
   };
 
   return (
@@ -17,6 +17,7 @@ const UserViewer = (props) => {
           {user.name}
         </div>
       ))}
+      <ProfileInfo profile={props.profile} updateStatus={()=>{}}/>
     </div>
   );
 };

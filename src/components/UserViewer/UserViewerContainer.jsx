@@ -1,26 +1,38 @@
-import React from 'react';
-import UserViewer from './UserViewer';
+import React from "react";
+import UserViewer from "./UserViewer";
+import { connect } from "react-redux";
+import { getUsers } from "../../state/viewer-reducer";
+import {getUserProfile} from '../../state/updates-reducer';
 
 class UserViewerContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {currentUser: null};
-    }
 
-    setCurrentUser(userId) {
-        this.setState({ currentUser: userId});
-    }
+  componentDidMount() {
+    this.props.getUsers();
+  }
 
-    render() {
-        return (
-            <>
-                <UserViewer
-                    users={this.props.users}
-                    setCurrentUser={this.setCurrentUser}
-                />
-            </>
-        );
-    }
+  setCurrentUser(userId) {
+    console.log(this.props);
+    this.props.getUserProfile(userId)
+  }
+
+  render() {
+    return (
+      <>
+        <UserViewer
+          users={this.props.users}
+          setCurrentUser={this.setCurrentUser}
+          profile={this.props.profile}
+        />
+      </>
+    );
+  }
 }
 
-export default UserViewerContainer;
+const mapStateToProps = (state) => {
+  return {
+    users: state.viewer.users,
+    profile: state.updates.profile,
+  };
+};
+
+export default connect(mapStateToProps, { getUsers , getUserProfile })(UserViewerContainer);

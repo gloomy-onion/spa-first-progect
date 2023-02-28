@@ -4,6 +4,7 @@ const SET_USERS = "viewer/SET_USERS";
 
 const initialState = {
   users: [],
+  profile: null
 };
 
 const viewerReducer = (state = initialState, action) => {
