@@ -18,7 +18,7 @@ const updatesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       const newPost = {
-        message: action.newPostText,
+        message: action.payload,
         id: 5,
         likesCount: 0,
       };

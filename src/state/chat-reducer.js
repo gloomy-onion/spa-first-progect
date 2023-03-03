@@ -12,14 +12,13 @@ const initialState = {
     { id: 1, messageText: "Your workers are ready to start" },
     { id: 2, messageText: "Your order is delayed" },
     { id: 3, messageText: "Your color has been changed" },
-  ]
+  ],
 };
 
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case SEND_MESSAGE:
-      const body = action.newMessageBody;
+      const body = action.payload;
       return {
         ...state,
         messageContent: [...state.messageContent, { id: 4, messageText: body }],
@@ -33,9 +32,8 @@ const chatReducer = (state = initialState, action) => {
 export const sendMessage = (newMessageBody) => {
   return {
     type: SEND_MESSAGE,
-    payload: newMessageBody
+    payload: newMessageBody,
   };
 };
-
 
 export default chatReducer;

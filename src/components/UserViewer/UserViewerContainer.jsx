@@ -10,8 +10,7 @@ class UserViewerContainer extends React.Component {
     this.props.getUsers();
   }
 
-  setCurrentUser(userId) {
-    console.log(this.props);
+  setCurrentUser = (userId) => {
     this.props.getUserProfile(userId)
   }
 
