@@ -2,16 +2,20 @@ import React from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
+import { Field, reduxForm } from "redux-form";
+import { Textarea } from "../common/FormsControls/FormsControls";
+import {
+  maxLengthCreator,
+  required,
+} from "../../helpers/validators/validators";
 
 const Chat = (props) => {
-  const { newMessageBody, messageContent, dialogueInfo } = props;
-  const onSendMessageClick = () => {
-    props.sendMessage();
+  const { messageContent, dialogueInfo } = props;
+
+  const addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
   };
-  const onNewMessageChange = (event) => {
-    const body = event.target.value;
-    props.updateNewMessageBody(body);
-  };
+
   return (
     <div className={styles.dialogues}>
       <div className={styles.dialoguesItems}>
@@ -32,16 +36,33 @@ const Chat = (props) => {
           return <Message messageText={text.messageText} />;
         })}
         <div>
-          <div>
-            <textarea value={newMessageBody} onChange={onNewMessageChange} />
-          </div>
-          <div>
-            <button onClick={onSendMessageClick}>Send</button>
-          </div>
+          <AddMessageForm onSubmit={addNewMessage} />
         </div>
       </div>
     </div>
   );
 };
+
+const maxLength60 = maxLengthCreator(60);
+
+let AddMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          component={Textarea}
+          validate={[required, maxLength60]}
+          name={"newMessageBody"}
+          placeholder={"Enter your message"}
+        />
+      </div>
+      <div>
+        <button>Send</button>
+      </div>
+    </form>
+  );
+};
+
+AddMessageForm = reduxForm({ form: "chatAddMessageForm" })(AddMessageForm);
 
 export default Chat;

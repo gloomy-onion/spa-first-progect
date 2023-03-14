@@ -1,9 +1,9 @@
-const linksPath = [
+const basePath = [
   { to: "/", text: "Main Page" },
   { to: "/chat", text: "Chat" },
   { to: "/updates", text: "Updates" },
   { to: "/profile", text: "Profile" },
   { to: "/team", text: "Team" },
-  { to: "/login", text: "Login" },
+  { to: "/user-viewer", text: "View" },
 ];
-export default linksPath;
+export default basePath;

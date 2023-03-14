@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
 const SEND_MESSAGE = "SEND_MESSAGE";
 
 const initialState = {
@@ -14,22 +13,14 @@ const initialState = {
     { id: 2, messageText: "Your order is delayed" },
     { id: 3, messageText: "Your color has been changed" },
   ],
-  newMessageBody: "la-la-la",
 };
 
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY:
-      return {
-        ...state,
-        newMessageBody: action.payload,
-      };
-
     case SEND_MESSAGE:
-      const body = state.newMessageBody;
+      const body = action.payload;
       return {
         ...state,
-        newMessageBody: "",
         messageContent: [...state.messageContent, { id: 4, messageText: body }],
       };
 
@@ -38,16 +29,10 @@ const chatReducer = (state = initialState, action) => {
   }
 };
 
-export const sendMessage = () => {
+export const sendMessage = (newMessageBody) => {
   return {
     type: SEND_MESSAGE,
-  };
-};
-
-export const updateNewMessageBody = (body) => {
-  return {
-    type: UPDATE_NEW_MESSAGE_BODY,
-    payload: body,
+    payload: newMessageBody,
   };
 };
 

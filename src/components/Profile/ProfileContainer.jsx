@@ -1,8 +1,14 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { getUserProfile } from "../../state/updates-reducer";
-import withRouter from '../../hoc/withRouter';
+import {
+  getStatus,
+  getUserProfile,
+  updateStatus,
+} from "../../state/updates-reducer";
+import withRouter from "../../hoc/withRouter";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -10,13 +16,14 @@ class ProfileContainer extends React.Component {
     if (!userId) {
       userId = 2;
     }
-this.props.getUserProfile(userId);
+    this.props.getUserProfile(userId);
+    this.props.getStatus(userId);
   }
 
   render() {
     return (
       <div>
-        <Profile {...this.props} profile={this.props.profile} />
+        <Profile {...this.props} />
       </div>
     );
   }
@@ -24,9 +31,13 @@ this.props.getUserProfile(userId);
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.updates.profile
+    profile: state.updates.profile,
+    status: state.updates.status,
   };
 };
-const WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);
+export default compose(
+  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);
