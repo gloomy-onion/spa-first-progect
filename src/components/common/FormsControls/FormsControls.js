@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./FormsControls.module.css";
+import cn from 'classnames';
 
 const FormControl = ({ input, meta, child, ...props }) => {
   const hasError = meta.touched && meta.error;
 
   return (
-    <div className={styles.formControl + "" + (hasError ? styles.error : "")}>
+    <div className={cn(styles.formControl, {[styles.error]: hasError})}>
       <div>{props.children}</div>
       {hasError && <span>{meta.error}</span>}
     </div>

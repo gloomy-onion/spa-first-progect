@@ -1,0 +1,23 @@
+.viewerContainer {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+.viewerUsers {
+    display: flex;
+    flex-direction: column;
+}
+
+.viewerUser:not(:last-child) {
+    margin: 0 0 7px 0;
+}
+
+.viewerUser{
+    cursor: pointer;
+}
+
+.active {
+    text-decoration: line-through;
+}
+
