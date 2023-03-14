@@ -3,6 +3,11 @@ import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
 import { Field, reduxForm } from "redux-form";
+import { Textarea } from "../common/FormsControls/FormsControls";
+import {
+  maxLengthCreator,
+  required,
+} from "../../helpers/validators/validators";
 
 const Chat = (props) => {
   const { messageContent, dialogueInfo } = props;
@@ -38,12 +43,15 @@ const Chat = (props) => {
   );
 };
 
+const maxLength60 = maxLengthCreator(60);
+
 let AddMessageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
         <Field
-          component={"textarea"}
+          component={Textarea}
+          validate={[required, maxLength60]}
           name={"newMessageBody"}
           placeholder={"Enter your message"}
         />

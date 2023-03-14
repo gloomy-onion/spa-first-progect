@@ -2,7 +2,12 @@ import React from "react";
 import Post from "./Post/Post";
 import styles from "./Updates.module.css";
 import cn from "classnames";
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from "redux-form";
+import {
+  maxLengthCreator,
+  required,
+} from "../../helpers/validators/validators";
+import { Textarea } from "../common/FormsControls/FormsControls";
 
 const Updates = (props) => {
   const { postsData } = props;
@@ -14,7 +19,7 @@ const Updates = (props) => {
   return (
     <div className={cn(styles.posts)}>
       <h3>Our Thoughts and Updates</h3>
-<AddNewPostForm onSubmit={onAddPost}/>
+      <AddNewPostForm onSubmit={onAddPost} />
       <div className={styles.posts}>
         {postsData.map((data) => {
           return (
@@ -30,11 +35,16 @@ const Updates = (props) => {
   );
 };
 
+const maxLength50 = maxLengthCreator(50);
+
 let AddNewPostForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field name={'newPostText'} component={'textarea'}
+        <Field
+          name={"newPostText"}
+          component={Textarea}
+          validate={[required, maxLength50]}
         />
       </div>
       <div>
@@ -44,6 +54,6 @@ let AddNewPostForm = (props) => {
   );
 };
 
-AddNewPostForm = reduxForm({form: 'UpdatesAddNewPostForm'})(AddNewPostForm)
+AddNewPostForm = reduxForm({ form: "UpdatesAddNewPostForm" })(AddNewPostForm);
 
 export default Updates;
