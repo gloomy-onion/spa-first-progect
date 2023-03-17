@@ -16,7 +16,7 @@ const NavBar = (props) => {
             {basePath.map((path) => {
               return <NavigationLink to={path.to} text={path.text} />;
             })}
-              {props.isAuth ? props.login : <NavigationLink to={"/login"} text={"Login"} />}
+              {props.isAuth ? <div>props.login</div> - <button> </button> : <NavigationLink to={"/login"} text={"Login"} />}
           </div>
         </div>
       </div>
