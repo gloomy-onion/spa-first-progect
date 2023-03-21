@@ -6,7 +6,7 @@ import basePath from "./basePath";
 import { NavigationLink } from "../common/NavigationLink/NavigationLink";
 
 const NavBar = (props) => {
-
+  console.log(props);
   return (
     <nav>
       <div className={cn(styles.show, styles.dropdown)}>
@@ -16,7 +16,14 @@ const NavBar = (props) => {
             {basePath.map((path) => {
               return <NavigationLink to={path.to} text={path.text} />;
             })}
-              {props.isAuth ? <div>props.login</div> - <button onClick={props.logout}> Log out </button> : <NavigationLink to={"/login"} text={"Login"} />}
+            {props.isAuth ? (
+              <div>
+                {props.login}
+                <button onClick={props.logout}> Log out </button>
+              </div>
+            ) : (
+              <NavigationLink to={"/login"} text={"Login"} />
+            )}
           </div>
         </div>
       </div>
