@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { login } from "../../state/auth-reducer";
 import { Navigate } from "react-router";
 import style from "./../common/FormsControls/FormsControls.module.css";
+import Button from '../common/Button/Button';
 
 const LoginForm = (props) => {
   return (
@@ -30,7 +31,7 @@ const LoginForm = (props) => {
           <div className={style.formSummaryError}>{props.error}</div>
         )}
         <div>
-          <button>Login</button>
+          <Button text={'Login'}/>
         </div>
       </form>
     </>

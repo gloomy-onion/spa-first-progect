@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./team.module.css";
 import userImage from "../../assets/img/userImage.png";
 import { NavLink } from "react-router-dom";
+import Button from "../common/Button/Button";
 
 const Team = (props) => {
   const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -44,29 +45,25 @@ const Team = (props) => {
             <div>
               {" "}
               {user.followed ? (
-                <button
+                <Button
+                  text={"Unfollow"}
                   disabled={props.followingInProgress.some(
                     (id) => id === user.id
                   )}
                   onClick={() => {
                     props.unfollow(user);
                   }}
-                >
-                  {" "}
-                  Unfollow{" "}
-                </button>
+                />
               ) : (
-                <button
+                <Button
+                  text={"Follow"}
                   disabled={props.followingInProgress.some(
                     (id) => id === user.id
                   )}
                   onClick={() => {
                     props.follow(user);
                   }}
-                >
-                  {" "}
-                  Follow{" "}
-                </button>
+                />
               )}
             </div>
           </span>

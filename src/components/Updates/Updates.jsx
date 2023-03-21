@@ -8,6 +8,7 @@ import {
   required,
 } from "../../helpers/validators/validators";
 import { Textarea } from "../common/FormsControls/FormsControls";
+import Button from '../common/Button/Button';
 
 const Updates = (props) => {
   const { postsData } = props;
@@ -48,7 +49,7 @@ let AddNewPostForm = (props) => {
         />
       </div>
       <div>
-        <button>Post</button>
+        <Button text={'Post'}/>
       </div>
     </form>
   );
