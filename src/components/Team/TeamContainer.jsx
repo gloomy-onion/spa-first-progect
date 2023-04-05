@@ -61,17 +61,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     users: state.teamPage.users,
-//     pageSize: state.teamPage.pageSize,
-//     totalUsersCount: state.teamPage.totalUsersCount,
-//     currentPage: state.teamPage.currentPage,
-//     isFetching: state.teamPage.isFetching,
-//     followingInProgress: state.teamPage.followingInProgress,
-//   };
-// };
-
 export default compose(
   withAuthRedirect,
   connect(mapStateToProps, {
