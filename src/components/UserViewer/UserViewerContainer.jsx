@@ -1,8 +1,8 @@
 import React from "react";
 import UserViewer from "./UserViewer";
 import { connect } from "react-redux";
-import { getUsers } from "../../state/viewer-reducer";
 import {getUserProfile} from '../../state/updates-reducer';
+import {getUsers} from '../../state/viewer-reducer';
 
 class UserViewerContainer extends React.Component {
 

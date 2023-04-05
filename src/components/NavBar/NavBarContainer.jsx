@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import {connect} from 'react-redux';
-import {login, logout} from '../../state/auth-reducer';
+import {logout} from '../../state/auth-reducer';
 
 class NavBarContainer extends React.Component {
     render() {
@@ -15,6 +15,7 @@ class NavBarContainer extends React.Component {
         </div>;
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,

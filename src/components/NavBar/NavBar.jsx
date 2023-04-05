@@ -4,9 +4,9 @@ import styles from "./NavBar.module.css";
 import cn from "classnames";
 import basePath from "./basePath";
 import { NavigationLink } from "../common/NavigationLink/NavigationLink";
+import Button from "../common/Button/Button";
 
 const NavBar = (props) => {
-  console.log(props);
   return (
     <nav>
       <div className={cn(styles.show, styles.dropdown)}>
@@ -19,7 +19,7 @@ const NavBar = (props) => {
             {props.isAuth ? (
               <div>
                 {props.login}
-                <button onClick={props.logout}> Log out </button>
+                <Button text={"Log Out"} onClick={props.logout} />
               </div>
             ) : (
               <NavigationLink to={"/login"} text={"Login"} />

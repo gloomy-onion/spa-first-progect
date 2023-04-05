@@ -28,7 +28,7 @@ export const setUsers = (users) => ({
 
 export const getUsers = () => {
   return (dispatch) => {
-    usersAPI.getUsers().then((data) => {
+    usersAPI.requestUsers().then((data) => {
       dispatch(setUsers(data.items));
     });
   };

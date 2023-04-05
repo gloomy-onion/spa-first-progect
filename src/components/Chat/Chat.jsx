@@ -8,6 +8,7 @@ import {
   maxLengthCreator,
   required,
 } from "../../helpers/validators/validators";
+import Button from '../common/Button/Button';
 
 const Chat = (props) => {
   const { messageContent, dialogueInfo } = props;
@@ -57,7 +58,7 @@ let AddMessageForm = (props) => {
         />
       </div>
       <div>
-        <button>Send</button>
+        <Button text={'Send'}/>
       </div>
     </form>
   );
