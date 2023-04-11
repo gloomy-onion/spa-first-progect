@@ -10,31 +10,33 @@ import {
 import { Textarea } from "../common/FormsControls/FormsControls";
 import Button from '../common/Button/Button';
 
-const Updates = (props) => {
-  const { postsData } = props;
+class Updates extends React.Component {
+  render() {
+    const { postsData } = this.props;
 
-  const onAddPost = (values) => {
-    props.addPost(values.newPostText);
-  };
+    const onAddPost = (values) => {
+      this.props.addPost(values.newPostText);
+    };
 
-  return (
-    <div className={cn(styles.posts)}>
-      <h3>Our Thoughts and Updates</h3>
-      <AddNewPostForm onSubmit={onAddPost} />
-      <div className={styles.posts}>
-        {postsData.map((data) => {
-          return (
-            <Post
-              message={data.message}
-              id={data.id}
-              likesCount={data.likesCount}
-            />
-          );
-        })}
+    return (
+      <div className={cn(styles.posts)}>
+        <h3>Our Thoughts and Updates</h3>
+        <AddNewPostForm onSubmit={onAddPost} />
+        <div className={styles.posts}>
+          {postsData.map((data) => {
+            return (
+              <Post
+                message={data.message}
+                id={data.id}
+                likesCount={data.likesCount}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const maxLength50 = maxLengthCreator(50);
 
