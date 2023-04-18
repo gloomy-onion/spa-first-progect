@@ -12,10 +12,10 @@ import Button from '../common/Button/Button';
 
 class Updates extends React.Component {
   render() {
-    const { postsData } = this.props;
+    const { postsData, addPost } = this.props;
 
     const onAddPost = (values) => {
-      this.props.addPost(values.newPostText);
+    addPost(values.newPostText);
     };
 
     return (

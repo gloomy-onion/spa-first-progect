@@ -1,17 +1,18 @@
-import { profileAPI, usersAPI } from "../api/api";
+import { profileAPI, usersAPI } from '../api/api';
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_STATUS = "SET_STATUS";
+const ADD_POST = 'ADD-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 const initialState = {
   postsData: [
-    { message: "Hi", id: 1, likesCount: 20 },
-    { message: "bye", id: 2, likesCount: 0 },
-    { message: "bye", id: 3, likesCount: 88 },
+    { message: 'Hi', id: 1, likesCount: 20 },
+    { message: 'bye', id: 2, likesCount: 0 },
+    { message: 'bye', id: 3, likesCount: 88 },
   ],
   profile: null,
-  status: "",
+  status: '',
 };
 
 const updatesReducer = (state = initialState, action) => {
@@ -25,7 +26,7 @@ const updatesReducer = (state = initialState, action) => {
       return {
         ...state,
         postsData: [...state.postsData, newPost],
-        newPostText: "",
+        newPostText: '',
       };
     }
 
@@ -35,10 +36,18 @@ const updatesReducer = (state = initialState, action) => {
         status: action.payload,
       };
     }
+
     case SET_USER_PROFILE: {
       return {
         ...state,
         profile: action.payload,
+      };
+    }
+
+    case DELETE_POST: {
+      return {
+        ...state,
+        posts: state.postsData.filter((p) => p.id != action.postId),
       };
     }
 
@@ -64,6 +73,13 @@ export const setStatus = (status) => {
   return {
     type: SET_STATUS,
     payload: status,
+  };
+};
+
+export const deletePost = (postId) => {
+  return {
+    type: DELETE_POST,
+    payload: postId,
   };
 };
 
