@@ -1,5 +1,5 @@
 import axios from "axios";
-import {requestUsers} from '../state/team-reducer';
+
 
 const instance = axios.create({
   withCredentials: true,
