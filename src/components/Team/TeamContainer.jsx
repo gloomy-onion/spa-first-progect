@@ -18,7 +18,6 @@ import {
   getPageSize,
   getTotalUsersCount,
   getUsers,
-  getUsersSuperSelector,
 } from "../../state/user-selectors";
 
 class TeamContainer extends React.Component {
