@@ -23,14 +23,15 @@ const teamReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.payload, "id", {
+        users: updateObjectInArray(state.users, action.payload.id, "id", {
           followed: true,
         }),
       };
 
     case UNFOLLOW:
       return {
-        users: updateObjectInArray(state.users, action.payload, "id", {
+        ...state,
+        users: updateObjectInArray(state.users, action.payload.id, "id", {
           followed: false,
         }),
       };
@@ -134,7 +135,7 @@ const followUnfollowFlow = async (
 ) => {
   dispatch(toggleFollowingProgress(true, userId));
   const response = await apiMethod(userId);
-  if (response.data.resultCode === 0) {
+  if (response.resultCode === 0) {
     dispatch(actionCreator(userId));
   }
   dispatch(toggleFollowingProgress(false, userId));

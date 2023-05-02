@@ -48,7 +48,6 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
           <div>{"user.location.city"}</div>
         </span>
       </span>
-      ))}
     </div>
   );
 };
