@@ -1,37 +1,34 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Input } from "../common/FormsControls/FormsControls";
+import { createField, Input } from "../common/FormsControls/FormsControls";
 import { connect } from "react-redux";
 import { login } from "../../state/auth-reducer";
 import { Navigate } from "react-router";
 import style from "./../common/FormsControls/FormsControls.module.css";
-import Button from '../common/Button/Button';
+import Button from "../common/Button/Button";
+import { required } from "../../helpers/validators/validators";
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     <>
       <h1>Login </h1>
-      <form onSubmit={props.handleSubmit}>
-        <div>
-          <Field placeholder={"Email"} name={"email"} component={Input} />
-        </div>
-        <div>
-          <Field
-            placeholder={"Password"}
-            name={"password"}
-            component={Input}
-            type={"password"}
-          />
-        </div>
-        <div>
-          <Field type={"checkbox"} name={"rememberMe"} component={Input} />
-          remember me
-        </div>
-        {props.error && (
-          <div className={style.formSummaryError}>{props.error}</div>
+      <form onSubmit={handleSubmit}>
+        {createField("Email", "email", [required], Input)}
+        {createField("Password", "password", [required], Input, {
+          type: "password",
+        })}
+        {createField(
+          null,
+          "rememberMe",
+          [],
+          Input,
+          { type: "checkbox" },
+          "remember me"
         )}
+
+        {error && <div className={style.formSummaryError}>{error}</div>}
         <div>
-          <Button text={'Login'}/>
+          <Button text={"Login"} />
         </div>
       </form>
     </>
@@ -50,10 +47,11 @@ const Login = (props) => {
   if (props.isAuth) {
     return <Navigate to={"/profile"} />;
   }
-  return(
-  <div>
-    <LoginReduxForm onSubmit={onFormSubmit} />
-  </div>)
+  return (
+    <div>
+      <LoginReduxForm onSubmit={onFormSubmit} />
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({
