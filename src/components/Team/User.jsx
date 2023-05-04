@@ -6,9 +6,10 @@ import Button from "../common/Button/Button";
 
 const User = ({ user, followingInProgress, unfollow, follow }) => {
   return (
-    <div>
-      <span>
-        <div>
+   <div>
+    <div className={styles.card}>
+      <span >
+        <div >
           <NavLink to={"/profile/" + user.id}>
             <img
               src={user.photos.small != null ? user.photos.small : userImage}
@@ -49,6 +50,7 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
         </span>
       </span>
     </div>
+   </div>
   );
 };
 
