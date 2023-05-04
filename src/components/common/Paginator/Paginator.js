@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Paginator.module.css";
+import s from './../Button/Button.module.css'
 
 const Paginator = ({
   totalUsersCount,
@@ -22,8 +23,9 @@ const Paginator = ({
 
   return (
     <div className={styles.pagination}>
+      <div className={styles.pageNumbers}>
       {portionNumber > 1 && (
-        <button
+        <button className={s.button}
           onClick={() => {
             setPortionNumber(portionNumber - 1);
           }}
@@ -31,31 +33,33 @@ const Paginator = ({
           Previous
         </button>
       )}
-      {pages
-        .filter(
-          (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
-        )
-        .map((p) => {
-          return (
-            <span
-              className={currentPage === p && styles.selectedPage}
-              onClick={(e) => {
-                onPageChanged(p);
-              }}
-            >
+        {pages
+          .filter(
+            (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
+          )
+          .map((p) => {
+            return (
+              <span
+                className={currentPage === p && styles.selectedPage}
+                onClick={(e) => {
+                  onPageChanged(p);
+                }}
+              >
               {p}
-            </span>
-          );
-        })}
-      {portionCount > portionNumber && (
-        <button
-          onClick={() => {
-            setPortionNumber(portionNumber + 1);
-          }}
-        >
-          Next
-        </button>
-      )}
+              </span>
+            );
+          })}
+
+        {portionCount > portionNumber && (
+          <button className={s.button}
+            onClick={() => {
+              setPortionNumber(portionNumber + 1);
+            }}
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };
