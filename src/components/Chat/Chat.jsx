@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
-import { Field, reduxForm } from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import { Textarea } from "../common/FormsControls/FormsControls";
 import {
   maxLengthCreator,
@@ -47,6 +47,8 @@ const Chat = (props) => {
 const maxLength60 = maxLengthCreator(60);
 
 let AddMessageForm = (props) => {
+
+
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -58,7 +60,7 @@ let AddMessageForm = (props) => {
         />
       </div>
       <div>
-        <Button text={'Send'}/>
+        <Button text={'Send'} />
       </div>
     </form>
   );
