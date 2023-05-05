@@ -4,7 +4,7 @@ import userImage from "../../assets/img/userImage.png";
 import { NavLink } from "react-router-dom";
 import Button from "../common/Button/Button";
 
-const User = ({ user, followingInProgress, unfollow, follow }) => {
+const User = ({ user, followingInProgress, unfollow, follow, location }) => {
   return (
    <div>
     <div className={styles.card}>
@@ -45,8 +45,9 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
           <div>{user.status}</div>
         </span>
         <span>
-          <div>{"user.location.country"}</div>
-          <div>{"user.location.city"}</div>
+          {/*куда делась локация я вообще не пойму*/}
+          <div>{"country"}</div>
+          <div>{"city"}</div>
         </span>
       </span>
     </div>
