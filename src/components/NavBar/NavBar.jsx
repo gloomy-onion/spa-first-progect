@@ -12,7 +12,7 @@ const NavBar = (props) => {
       <div className={cn(styles.show, styles.dropdown)}>
         <img className={styles.list} src={list} alt={""} />
         <div className={styles.dropdownContent}>
-          <div className={styles.dropdown}>
+          <div className={styles.navbar}>
             {basePath.map((path) => {
               return <NavigationLink to={path.to} text={path.text} />;
             })}

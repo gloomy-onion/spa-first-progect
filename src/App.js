@@ -8,6 +8,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import { connect } from "react-redux";
 import { initializeApp } from "./state/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import { Suspense } from "react";
 
 const renderPath = () =>
   routesElements.map(({ path, exact, element }) => (
@@ -28,13 +29,21 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="App">
           <HeaderContainer />
-          <Routes>
-            {renderPath()}
-            <Route path={"/profile"}>
-              <Route path={":userId"} element={<ProfileContainer />} />
-              <Route path={""} element={<ProfileContainer />} />
-            </Route>
-          </Routes>
+          <Suspense
+            fallback={
+              <div>
+                <Preloader />
+              </div>
+            }
+          >
+            <Routes>
+              {renderPath()}
+              <Route path={"/profile"}>
+                <Route path={":userId"} element={<ProfileContainer />} />
+                <Route path={""} element={<ProfileContainer />} />
+              </Route>
+            </Routes>
+          </Suspense>
           <Footer />
         </div>
       </BrowserRouter>
