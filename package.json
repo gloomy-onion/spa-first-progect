@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": " https://gloomy-onion.github.io/spa-first-project/",
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
@@ -16,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
@@ -33,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d -build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +59,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.21",
+    "gh-pages": "^5.0.0",
     "prettier": "2.7.1"
   }
 }
