@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Chat.module.css";
 import ChatItem from "./ChatItem/ChatItem";
 import Message from "./Message/Message";
-import { Field, reduxForm, reset } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { Textarea } from "../common/FormsControls/FormsControls";
 import {
   maxLengthCreator,
@@ -47,13 +47,13 @@ const Chat = (props) => {
 const maxLength60 = maxLengthCreator(60);
 
 let AddMessageForm = (props) => {
-  const { handleSubmit} = props;
-
-  const clearTextarea = () => {
-    reset("chatAddMessageForm");
+  const { handleSubmit, reset } = props;
+  const onSubmit = (data) => {
+    handleSubmit(data);
+    reset()
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onSubmit}>
       <div>
         <Field
           component={Textarea}
@@ -63,7 +63,7 @@ let AddMessageForm = (props) => {
         />
       </div>
       <div>
-        <Button text={"Send"} onClick={clearTextarea} />
+        <Button text={"Send"} />
       </div>
     </form>
   );

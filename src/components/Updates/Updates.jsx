@@ -8,14 +8,14 @@ import {
   required,
 } from "../../helpers/validators/validators";
 import { Textarea } from "../common/FormsControls/FormsControls";
-import Button from '../common/Button/Button';
+import Button from "../common/Button/Button";
 
 class Updates extends React.Component {
   render() {
     const { postsData, addPost } = this.props;
 
     const onAddPost = (values) => {
-    addPost(values.newPostText);
+      addPost(values.newPostText);
     };
 
     return (
@@ -41,8 +41,14 @@ class Updates extends React.Component {
 const maxLength50 = maxLengthCreator(50);
 
 let AddNewPostForm = (props) => {
+  const { handleSubmit, reset } = props;
+
+  const onSubmit = (data) => {
+    handleSubmit(data);
+    reset();
+  };
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={onSubmit}>
       <div>
         <Field
           name={"newPostText"}
@@ -51,7 +57,7 @@ let AddNewPostForm = (props) => {
         />
       </div>
       <div>
-        <Button text={'Post'}/>
+        <Button text={"Post"} />
       </div>
     </form>
   );
