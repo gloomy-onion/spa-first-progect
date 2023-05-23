@@ -8,13 +8,13 @@ import {
   maxLengthCreator,
   required,
 } from "../../helpers/validators/validators";
-import Button from '../common/Button/Button';
+import Button from "../common/Button/Button";
 
 const Chat = (props) => {
-  const { messageContent, dialogueInfo } = props;
+  const { messageContent, dialogueInfo, sendMessage } = props;
 
   const addNewMessage = (values) => {
-    props.sendMessage(values.newMessageBody);
+    sendMessage(values.newMessageBody);
   };
 
   return (
@@ -47,8 +47,13 @@ const Chat = (props) => {
 const maxLength60 = maxLengthCreator(60);
 
 let AddMessageForm = (props) => {
+  const { handleSubmit, reset } = props;
+  const onSubmit = (data) => {
+    handleSubmit(data);
+    reset()
+  };
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={onSubmit}>
       <div>
         <Field
           component={Textarea}
@@ -58,7 +63,7 @@ let AddMessageForm = (props) => {
         />
       </div>
       <div>
-        <Button text={'Send'}/>
+        <Button text={"Send"} />
       </div>
     </form>
   );

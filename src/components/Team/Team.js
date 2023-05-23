@@ -1,7 +1,7 @@
 import React from "react";
-
 import User from "./User";
 import Paginator from "../common/Paginator/Paginator";
+import styles from "./team.module.css";
 
 const Team = ({
   currentPage,
@@ -19,6 +19,7 @@ const Team = ({
         totalUsersCount={totalUsersCount}
         pageSize={pageSize}
       />
+      <div className={styles.container}>
       {users.map((u) => (
         <User
           user={u}
@@ -28,6 +29,7 @@ const Team = ({
           key={u.id}
         />
       ))}
+    </div>
     </div>
   );
 };

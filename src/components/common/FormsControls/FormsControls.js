@@ -47,7 +47,7 @@ export const createField = (
       component={component}
       validator={validator}
       {...props}
-    />{" "}
+    />
     {text}
   </div>
 );
