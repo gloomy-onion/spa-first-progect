@@ -5,7 +5,7 @@ export const renderContacts = (profile) => {
         ([name, link]) => (
             <div>
                 {name[0].toUpperCase() + name.slice(1)}:
-                {link ?? "not defined"}
+                {link ?? " not defined"}
             </div>
         )
     );
