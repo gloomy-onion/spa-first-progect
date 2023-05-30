@@ -25,7 +25,7 @@ class Updates extends React.Component {
         <div className={styles.posts}>
           {postsData.map((data) => {
             return (
-              <Post
+              <Post key={data.id}
                 message={data.message}
                 id={data.id}
                 likesCount={data.likesCount}

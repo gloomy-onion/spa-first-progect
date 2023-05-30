@@ -12,7 +12,7 @@ import { Suspense } from "react";
 
 const renderPath = () =>
   routesElements.map(({ path, exact, element }) => (
-    <Route exact={exact} path={path} element={element} />
+    <Route key={element} exact={exact} path={path} element={element} />
   ));
 
 class App extends React.Component {

@@ -34,7 +34,7 @@ const Chat = (props) => {
       </div>
       <div className={styles.messages}>
         {messageContent.map((text) => {
-          return <Message messageText={text.messageText} />;
+          return <Message key={text.id} messageText={text.messageText} />;
         })}
         <div>
           <AddMessageForm onSubmit={addNewMessage} />

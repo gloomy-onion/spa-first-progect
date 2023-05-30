@@ -14,7 +14,7 @@ const NavBar = (props) => {
         <div className={styles.dropdownContent}>
           <div className={styles.navbar}>
             {basePath.map((path) => {
-              return <NavigationLink to={path.to} text={path.text} />;
+              return <NavigationLink key={path.to} to={path.to} text={path.text} />;
             })}
             {props.isAuth ? (
               <div>
