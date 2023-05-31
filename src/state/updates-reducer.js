@@ -1,9 +1,12 @@
 import { profileAPI, usersAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
+import ProfileDataForm from "../components/Profile/ProfileInfo/ProfileDataForm";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const DELETE_POST = "DELETE_POST";
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 
 const initialState = {
   postsData: [
@@ -47,7 +50,14 @@ const updatesReducer = (state = initialState, action) => {
     case DELETE_POST: {
       return {
         ...state,
-        posts: state.postsData.filter((p) => p.id !== action.postId),
+        posts: state.postsData.filter((p) => p.id !== action.payload),
+      };
+    }
+
+    case SAVE_PHOTO_SUCCESS: {
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.payload },
       };
     }
 
@@ -82,6 +92,12 @@ export const deletePost = (postId) => {
     payload: postId,
   };
 };
+export const savePhotoSuccess = (photos) => {
+  return {
+    type: SAVE_PHOTO_SUCCESS,
+    payload: photos,
+  };
+};
 
 export const getUserProfile = (userId) => async (dispatch) => {
   const response = await usersAPI.getProfile(userId);
@@ -97,6 +113,24 @@ export const updateStatus = (status) => async (dispatch) => {
   const response = await profileAPI.updateStatus(status);
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
+  }
+};
+
+export const savePhoto = (file) => async (dispatch) => {
+  const response = await profileAPI.savePhoto(file);
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.data.photos));
+  }
+};
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId;
+  const response = await profileAPI.saveProfile(profile);
+  if (response.data.resultCode === 0) {
+    dispatch(getUserProfile(userId));
+  } else {
+    dispatch(stopSubmit("editProfile", { _error: response.data.messages[0] }));
+    return Promise.reject(response.data.messages[0]);
   }
 };
 

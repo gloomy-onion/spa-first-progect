@@ -11,8 +11,8 @@ import Preloader from "./components/common/Preloader/Preloader";
 import { Suspense } from "react";
 
 const renderPath = () =>
-  routesElements.map(({ path, exact, element }) => (
-    <Route exact={exact} path={path} element={element} />
+  routesElements.map(({ path, exact, element }, index) => (
+    <Route key={index} exact={exact} path={path} element={element} />
   ));
 
 class App extends React.Component {

@@ -12,6 +12,7 @@ const UserViewer = (props) => {
       <div className={styles.viewerUsers}>
         {props.users.map((user) => (
           <div
+              key={user.id}
             className={cn(styles.viewerUser, {
               [styles.active]:
                 props.profile && props.profile.userId === user.id,

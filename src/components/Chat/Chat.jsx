@@ -21,9 +21,10 @@ const Chat = (props) => {
     <div className={styles.dialogues}>
       <div className={styles.dialoguesItems}>
         <div className={styles.dialogue}>
-          {dialogueInfo.map((dialogue) => {
+          {dialogueInfo.map((dialogue, index) => {
             return (
               <ChatItem
+                  key={index}
                 to={dialogue.to}
                 userName={dialogue.userName}
                 id={dialogue.id}
@@ -33,8 +34,8 @@ const Chat = (props) => {
         </div>
       </div>
       <div className={styles.messages}>
-        {messageContent.map((text) => {
-          return <Message messageText={text.messageText} />;
+        {messageContent.map((text, index) => {
+          return <Message key={index} messageText={text.messageText} />;
         })}
         <div>
           <AddMessageForm onSubmit={addNewMessage} />
