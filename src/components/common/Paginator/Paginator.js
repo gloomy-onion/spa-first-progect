@@ -40,7 +40,8 @@ const Paginator = ({
           .map((p) => {
             return (
               <span
-                className={currentPage === p && styles.selectedPage}
+                  key={p}
+                className={ currentPage === p ? styles.selectedPage : undefined }
                 onClick={(e) => {
                   onPageChanged(p);
                 }}

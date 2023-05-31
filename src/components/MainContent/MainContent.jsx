@@ -18,9 +18,9 @@ const MainContent = () => {
     <>
       <img src={frontPageImg} className={styles.frontPage} alt={""} />
       <div className={styles.projectsContainer}>
-        {CARDS_INFO.map((card) => {
+        {CARDS_INFO.map((card, index) => {
           return (
-            <MainPageCard image={card.image} title={card.title} alt={""} />
+            <MainPageCard key={index} image={card.image} title={card.title} alt={""} />
           );
         })}
       </div>

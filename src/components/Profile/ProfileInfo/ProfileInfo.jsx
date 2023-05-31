@@ -57,11 +57,10 @@ const ProfileInfo = ({
   };
 
   const onSubmit = (formData) => {
-    saveProfile(formData).then(() => {
+    saveProfile(formData).then((response) => {
       setEditMode(false);
     });
   };
-  //говорит что saveProfile is not a function (я смотрю один урок уже тысячу часов(примерно 4) и у меня все чере каждые 5 минут ломается один раз я вообще отменила все изменения и писала заново меня уже тошнит от этого урока все я поныла спасибо)
 
   return (
     <div className={styles.main}>
